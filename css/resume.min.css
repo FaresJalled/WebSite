@@ -34,3 +34,9 @@
 
 /* Example with nested classes */
 .parent-container .post-views { display: none; }
+
+.post-views { display: none !important; }
+
+.post-views { visibility: hidden; }
+
+
