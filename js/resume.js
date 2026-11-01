@@ -33,3 +33,20 @@ document.addEventListener('DOMContentLoaded', function() {
       viewsElement.remove();
   }
 });
+// Fill the language bars when the Languages section scrolls into view
+// (previously a 10-second animation ran on page load, so visitors usually
+// saw half-empty bars).
+(function() {
+  var section = document.getElementById('languages');
+  if (!section || !('IntersectionObserver' in window)) return;
+  section.classList.add('bars-pending');
+  var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      requestAnimationFrame(function() {
+        section.classList.remove('bars-pending');
+      });
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
+  observer.observe(section);
+})();

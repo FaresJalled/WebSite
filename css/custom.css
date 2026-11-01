@@ -1,0 +1,154 @@
+/*
+ * Site-specific styles for faresjalled.org.
+ * Kept separate from the vendor files (Bootstrap etc.) so that updating
+ * a library never wipes out the site's own look.
+ */
+
+/* ---------- Readability ---------- */
+
+/* Body text: #868e96 on white is only 3.3:1 contrast; #6c757d passes WCAG AA (4.7:1). */
+body {
+  color: #6c757d;
+}
+
+/* Sidebar links: 50% white on green was 2.3:1. Use full white and mark the
+   active section with a darker pill instead of a brighter colour. */
+#sideNav .navbar-nav .nav-link {
+  color: #fff;
+  border-radius: .25rem;
+}
+#sideNav .navbar-nav .nav-link:hover,
+#sideNav .navbar-nav .nav-link:focus {
+  background-color: rgba(0, 0, 0, .12);
+}
+#sideNav .navbar-nav .nav-link.active {
+  background-color: rgba(0, 0, 0, .25);
+}
+
+/* "M.Sc." next to the name */
+.degree {
+  font-size: 70px;
+}
+@media (max-width: 575px) {
+  .degree {
+    font-size: 48px;
+  }
+}
+
+/* ---------- Small link "pills" (credentials, team pages, papers) ---------- */
+
+.GFG {
+  display: inline-block;
+  background-color: whitesmoke;
+  color: green;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.GFG:hover,
+.GFG:focus {
+  background-color: #e3eed6;
+  color: #2f5a00;
+  text-decoration: none;
+}
+
+/* Plain bullet lists (Learn IT, Interests) with breathing room between items */
+.spaced-list li {
+  margin-bottom: 1rem;
+}
+
+/* ---------- Skills logos ---------- */
+
+.skill-logos .list-inline-item {
+  margin: 0 1rem 1.25rem 0;
+  vertical-align: middle;
+}
+
+/* ---------- Language bars ---------- */
+
+.bar {
+  background-color: #eee;
+  padding: 2px;
+  border-radius: 15px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+}
+
+.bar::before {
+  content: attr(data-skill);
+  background-color: #68862b;
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px 0 5px 10px;
+  border-radius: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: width 1.2s ease-out;
+}
+
+.bar.learning::before     { width: calc(20% - 10px); }
+.bar.basic::before        { width: calc(40% - 10px); }
+.bar.intermediate::before { width: calc(70% - 50px); }
+.bar.advanced::before     { width: calc(80% - 50px); }
+.bar.expert::before       { width: calc(100% - 50px); }
+
+/* Bars start empty and fill when the Languages section scrolls into view
+   (js/resume.js adds/removes this class; without JS the bars are just full). */
+.bars-pending .bar::before {
+  width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar::before {
+    transition: none;
+  }
+}
+
+/* ---------- Support me ---------- */
+
+.moroccan-teapot-container {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #fef7e0 0%, #f5e6ca 100%);
+  border-radius: 15px;
+  border: 2px solid #d4af37;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, .3);
+  max-width: 280px;
+  margin: 3rem auto 0;
+}
+
+.moroccan-teapot-image {
+  display: block;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #d4af37;
+  margin: 0 auto 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+}
+
+.moroccan-tea-btn {
+  display: inline-block;
+  background-color: green;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow: 0 4px 8px rgba(0, 100, 0, .3);
+  font-family: Arial, sans-serif;
+}
+
+.moroccan-tea-btn:hover,
+.moroccan-tea-btn:focus {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 100, 0, .4);
+}
