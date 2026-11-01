@@ -1,0 +1,595 @@
+/*
+ * Site-specific styles for faresjalled.org.
+ * Kept separate from the vendor files (Bootstrap etc.) so that updating
+ * a library never wipes out the site's own look.
+ */
+
+/* ---------- Readability ---------- */
+
+/* Body text: #868e96 on white is only 3.3:1 contrast; #6c757d passes WCAG AA (4.7:1). */
+body {
+  color: #6c757d;
+}
+
+/* Sidebar links: 50% white on green was 2.3:1. Use full white and mark the
+   active section with a darker pill instead of a brighter colour. */
+#sideNav .navbar-nav .nav-link {
+  color: #fff;
+  border-radius: .25rem;
+}
+#sideNav .navbar-nav .nav-link:hover,
+#sideNav .navbar-nav .nav-link:focus {
+  background-color: rgba(0, 0, 0, .12);
+}
+#sideNav .navbar-nav .nav-link.active {
+  background-color: rgba(0, 0, 0, .25);
+}
+
+/* "M.Sc." next to the name */
+.degree {
+  font-size: 70px;
+}
+@media (max-width: 575px) {
+  .degree {
+    font-size: 48px;
+  }
+}
+
+/* ---------- Small link "pills" (credentials, team pages, papers) ---------- */
+
+.GFG {
+  display: inline-block;
+  background-color: whitesmoke;
+  color: green;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.GFG:hover,
+.GFG:focus {
+  background-color: #e3eed6;
+  color: #2f5a00;
+  text-decoration: none;
+}
+
+/* Plain bullet lists (Learn IT, Interests) with breathing room between items */
+.spaced-list li {
+  margin-bottom: 1rem;
+}
+
+/* ---------- Skills logos ---------- */
+
+.skill-logos .list-inline-item {
+  margin: 0 1rem 1.25rem 0;
+  vertical-align: middle;
+}
+
+/* ---------- Language bars ---------- */
+
+.bar {
+  background-color: #eee;
+  padding: 2px;
+  border-radius: 15px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+}
+
+.bar::before {
+  content: attr(data-skill);
+  background-color: #68862b;
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px 0 5px 10px;
+  border-radius: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: width 1.2s ease-out;
+}
+
+.bar.learning::before     { width: calc(20% - 10px); }
+.bar.basic::before        { width: calc(40% - 10px); }
+.bar.intermediate::before { width: calc(70% - 50px); }
+.bar.advanced::before     { width: calc(80% - 50px); }
+.bar.expert::before       { width: calc(100% - 50px); }
+
+/* Bars start empty and fill when the Languages section scrolls into view
+   (js/site.js adds/removes this class; without JS the bars are just full). */
+.bars-pending .bar::before {
+  width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar::before {
+    transition: none;
+  }
+}
+
+/* ---------- Support me ---------- */
+
+.moroccan-teapot-container {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #fef7e0 0%, #f5e6ca 100%);
+  border-radius: 15px;
+  border: 2px solid #d4af37;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, .3);
+  max-width: 280px;
+  margin: 3rem auto 0;
+}
+
+.moroccan-teapot-image {
+  display: block;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #d4af37;
+  margin: 0 auto 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+}
+
+.moroccan-tea-btn {
+  display: inline-block;
+  background-color: green;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow: 0 4px 8px rgba(0, 100, 0, .3);
+  font-family: Arial, sans-serif;
+}
+
+.moroccan-tea-btn:hover,
+.moroccan-tea-btn:focus {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 100, 0, .4);
+}
+
+/* ---------- Smooth scrolling (replaces the jQuery easing plugin) ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Skills logos: one height for all, width follows the logo ---------- */
+
+.skill-logos img {
+  height: 56px;
+  width: auto;
+  max-width: 100%;
+}
+
+/* ---------- Visitor counter (hidden until the count has loaded) ---------- */
+
+[data-visitor-bar]:not(.is-ready) {
+  display: none !important;
+}
+
+.visitor-chip {
+  margin: 0 auto 1rem;
+  padding: .25rem .75rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, .2);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .5rem 1.5rem;
+  border-top: 1px solid #dee2e6;
+  font-size: .9rem;
+}
+.visitor-bar {
+  font-weight: 600;
+}
+.visitor-note {
+  font-weight: 400;
+}
+
+/* ---------- Category colours (book covers, library tiles) ---------- */
+
+.cat-systems    { --cat: #3d6b00; }
+.cat-languages  { --cat: #1d5f9e; }
+.cat-web        { --cat: #a8420c; }
+.cat-databases  { --cat: #6b3fa0; }
+.cat-frameworks { --cat: #1f6f6b; }
+.cat-mobile     { --cat: #a3214f; }
+.cat-science    { --cat: #6f5200; }
+
+/* ---------- Learn IT section (CV page) ---------- */
+
+.learn-lead {
+  font-size: 1.1rem;
+  max-width: 50rem;
+}
+
+.learn-heading {
+  margin: 3rem 0 1rem;
+  font-size: 1.75rem;
+}
+.learn-count {
+  font-size: 1rem;
+  color: #6c757d;
+  vertical-align: middle;
+}
+
+.paths {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 1rem;
+}
+.path {
+  border: 1px solid #dee2e6;
+  border-top: 4px solid #568203;
+  border-radius: .5rem;
+  padding: 1rem 1.25rem;
+}
+.path-title {
+  font-size: 1.35rem;
+  margin-bottom: .25rem;
+}
+.path-blurb {
+  font-size: .9rem;
+  margin-bottom: .5rem;
+}
+.path-steps {
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+}
+.path-steps li {
+  margin-bottom: .15rem;
+}
+
+.library-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: .75rem;
+  margin: 1rem 0 1.5rem;
+}
+.library-tile {
+  display: block;
+  border: 1px solid #dee2e6;
+  border-left: 6px solid var(--cat);
+  border-radius: .5rem;
+  padding: .75rem 1rem;
+  color: #6c757d;
+}
+.library-tile:hover,
+.library-tile:focus {
+  text-decoration: none;
+  color: #495057;
+  background-color: #f8f9fa;
+}
+.library-tile-name {
+  display: block;
+  font-family: 'Saira Extra Condensed', serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: var(--cat);
+}
+.library-tile-books {
+  font-size: .85rem;
+}
+
+.library-btn {
+  display: inline-block;
+  background-color: #568203;
+  color: #fff;
+  font-weight: 700;
+  padding: .6rem 1.25rem;
+  border-radius: 2rem;
+}
+.library-btn:hover,
+.library-btn:focus {
+  color: #fff;
+  background-color: #3f6002;
+  text-decoration: none;
+}
+
+/* ---------- IT library page (learn-it.html) ---------- */
+
+.library section.resume-section {
+  min-height: 0;
+}
+.library-title {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+.library-lead {
+  font-size: 1.1rem;
+  max-width: 50rem;
+}
+.library-credit {
+  font-size: .85rem;
+  max-width: 50rem;
+  margin: 1.5rem 0 0;
+}
+
+.book-search {
+  width: 100%;
+  max-width: 32rem;
+  padding: .6rem 1rem;
+  border: 2px solid #ced4da;
+  border-radius: 2rem;
+  font-size: 1rem;
+}
+.book-search:focus {
+  outline: none;
+  border-color: #568203;
+}
+.book-search-empty {
+  margin-top: .75rem;
+  font-weight: 600;
+}
+
+.library-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.library-chip {
+  border: 2px solid var(--cat);
+  border-radius: 2rem;
+  padding: .2rem .8rem;
+  color: var(--cat);
+  font-weight: 600;
+  font-size: .9rem;
+}
+.library-chip span {
+  opacity: .75;
+}
+.library-chip:hover,
+.library-chip:focus {
+  background-color: var(--cat);
+  color: #fff;
+  text-decoration: none;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+  gap: 1rem;
+}
+.book-body .GFG {
+  white-space: normal;
+}
+
+.book {
+  display: flex;
+  gap: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: .5rem;
+  padding: 1rem;
+  scroll-margin-top: 4rem;
+}
+.book:target {
+  border-color: var(--cat);
+  box-shadow: 0 0 0 3px var(--cat);
+}
+
+.book-cover {
+  flex: 0 0 4.5rem;
+  height: 6.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: .5rem .4rem .4rem .7rem;
+  border-radius: 2px 6px 6px 2px;
+  background-color: var(--cat);
+  box-shadow: inset 5px 0 0 rgba(0, 0, 0, .25), 0 2px 4px rgba(0, 0, 0, .2);
+  color: #fff;
+  overflow: hidden;
+}
+.book-cover-title {
+  font-family: 'Saira Extra Condensed', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.book-cover-title--sm {
+  font-size: .78rem;
+}
+.book-cover-title--xs {
+  font-size: .64rem;
+}
+.book-cover-sub {
+  font-size: .55rem;
+  line-height: 1.1;
+  opacity: .9;
+}
+
+.book-body {
+  min-width: 0;
+}
+.book-title {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+.book-meta {
+  font-size: .8rem;
+  margin-bottom: .4rem;
+}
+.book-desc {
+  font-size: .95rem;
+  margin-bottom: .6rem;
+}
+.book-badge {
+  display: inline-block;
+  vertical-align: middle;
+  padding: .05rem .5rem;
+  border-radius: 1rem;
+  background-color: #e3eed6;
+  color: #2f5a00;
+  font-family: 'Open Sans', sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.nav-back {
+  opacity: .85;
+}
+
+/* ---------- Click-to-load Spotify player ---------- */
+
+.embed-facade {
+  border: 1px dashed #adb5bd;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+.embed-facade-btn {
+  border: 0;
+  border-radius: 2rem;
+  padding: .7rem 1.5rem;
+  background-color: #1db954;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+}
+.embed-facade-btn:hover,
+.embed-facade-btn:focus {
+  background-color: #1ed760;
+}
+.embed-facade-note {
+  font-size: .85rem;
+  margin: 1rem 0 0;
+}
+
+/* ---------- Support me ---------- */
+
+.support-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 3rem;
+}
+.support-grid .moroccan-teapot-container {
+  margin: 0;
+  max-width: 300px;
+}
+.tea-title {
+  font-size: 1.6rem;
+  margin-bottom: .25rem;
+}
+.tea-text {
+  font-size: .9rem;
+  color: #5a4a2a;
+}
+.tea-small {
+  font-size: .8rem;
+  color: #5a4a2a;
+  margin: .75rem 0 0;
+}
+.tea-paypal {
+  margin-top: 1rem;
+  padding-top: .75rem;
+  border-top: 1px solid rgba(212, 175, 55, .5);
+}
+.tea-amounts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .4rem;
+}
+.tea-amount {
+  border: 2px solid green;
+  border-radius: 1rem;
+  padding: .15rem .6rem;
+  background-color: #fff;
+  color: green;
+  font-weight: 700;
+  font-size: .85rem;
+}
+.tea-amount:hover,
+.tea-amount:focus {
+  background-color: green;
+  color: #fff;
+  text-decoration: none;
+}
+
+.free-support {
+  flex: 1 1 18rem;
+}
+.free-support-title {
+  font-size: 1.6rem;
+}
+.free-support li {
+  margin-bottom: .75rem;
+}
+.link-btn {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: #568203;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.link-btn:hover,
+.link-btn:focus {
+  text-decoration: underline;
+}
+
+/* ---------- Visitor count in the phone top bar ---------- */
+
+.visitor-chip-mobile {
+  margin-left: auto;
+  margin-right: .75rem;
+  padding: .15rem .6rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, .2);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------- References ---------- */
+
+.ref {
+  font-size: .75em;
+  vertical-align: super;
+  line-height: 0;
+  font-weight: 600;
+}
+.references {
+  padding-left: 1.5rem;
+  font-size: .9rem;
+}
+.references li {
+  margin-bottom: .4rem;
+  scroll-margin-top: 4rem;
+}
+.references li:target {
+  background-color: #e3eed6;
+}
+.references-note {
+  font-size: .85rem;
+}
+.library-more {
+  font-size: .95rem;
+  margin: 1.25rem 0 0;
+}
