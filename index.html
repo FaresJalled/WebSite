@@ -42,6 +42,7 @@
           <img class="mx-auto mb-1 rounded-circle" src="img/Selfie.jpeg" alt="Farés Jalled" width="245" height="310" style="object-fit: cover;">
         </span>
       </a>
+      <span class="visitor-chip-mobile d-lg-none" data-visitor-bar><span aria-hidden="true">👁</span> <span data-visitor-count></span> <span data-visitor-word>visitors</span></span>
       <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -86,7 +87,7 @@
         </ul>
       </div>
       <div class="visitor-chip d-none d-lg-block" data-visitor-bar>
-        <span aria-hidden="true">👁</span> <span data-visitor-count></span> visitors
+        <span aria-hidden="true">👁</span> <span data-visitor-count></span> <span data-visitor-word>visitors</span>
       </div>
     </nav>
 
@@ -94,13 +95,13 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="about">
         <div class="my-auto">
-          <h3> Messieurs, Mesdames, welcome to my Personal Website </h3>
+          <h3> Mesdames, Messieurs, welcome to my Personal Website </h3>
           <h1 class="mb-0"> FARÉS
             <span class="text-primary"> Jalled </span>
             <span class="degree"> M.Sc. </span>
           </h1>
           <div class="subheading mb-5">Berlin · Germany ·
-            <a href="mailto:jalledfars@phystech.edu">jalledfars[at]phystech[dot]edu</a>
+            <a data-contact-link href="https://www.linkedin.com/in/fares-jalled-8537b1105/" target="_blank" rel="noopener">✉ Write me a message</a>
           </div>
           <p class="mb-5"><b>
             I'm a professional swimmer with a deep passion for running and marathon. I also have a strong love for 'STEML' Science, Technology, Engineering, Mathematics, and Languages, especially in areas like Plasma physics, semiconductors, IT administration, electronics, and programming. My journey has taken me across the globe, living in five countries on three continents, where I've enjoyed immersing myself in diverse cultures and civilizations.
@@ -131,14 +132,6 @@
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://github.com/FaresJalled" target="_blank" rel="noopener" aria-label="GitHub">
-                <span class="fa-stack fa-lg">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
@@ -789,7 +782,7 @@
             book by book, or browse my free IT library.
           </p>
 
-          <h3 class="learn-heading">Learning paths</h3>
+          <h3 class="learn-heading">Learning paths <span class="learn-count">based on the books in <a class="ref" href="#learn-ref-1">[1]</a></span></h3>
           <div class="paths">
             <div class="path">
               <h4 class="path-title"><span aria-hidden="true">🐧</span> System administrator</h4>
@@ -850,8 +843,9 @@
 
           <h3 class="learn-heading">Free IT library <span class="learn-count">48 books</span></h3>
           <p>
-            The GoalKicker “Notes for Professionals” books are free PDFs compiled from Stack Overflow Documentation.
-            Every book has its own section in my library, with a short summary and a direct link.
+            The GoalKicker “Notes for Professionals” books <a class="ref" href="#learn-ref-1">[1]</a> are free PDFs written by
+            Stack Overflow contributors <a class="ref" href="#learn-ref-2">[2]</a>. They are not mine: my library lists each one in its own
+            section, with a short summary and a link to the original.
           </p>
           <div class="library-tiles">
             <a class="library-tile cat-systems" href="learn-it.html#cat-systems">
@@ -887,12 +881,26 @@
 
           <h3 class="learn-heading">More free learning platforms</h3>
           <ul class="spaced-list">
-            <li><a href="https://learn.microsoft.com/training/" target="_blank" rel="noopener">Microsoft Learn</a>: free courses for Azure, Windows Server and Microsoft 365, organised by certification.</li>
-            <li><a href="https://skillbuilder.aws/" target="_blank" rel="noopener">AWS Skill Builder</a>: Amazon's own cloud training, with many free courses.</li>
-            <li><a href="https://www.cloudskillsboost.google/" target="_blank" rel="noopener">Google Cloud Skills Boost</a>: hands-on labs and badges for Google Cloud and Workspace.</li>
-            <li><a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">Docker</a> and <a href="https://kubernetes.io/docs/tutorials/" target="_blank" rel="noopener">Kubernetes</a> official tutorials: the best way to learn containers.</li>
-            <li><a href="https://www.freecodecamp.org/learn/" target="_blank" rel="noopener">freeCodeCamp</a>: free interactive courses for web development, Python and more.</li>
+            <li><a href="https://learn.microsoft.com/training/" target="_blank" rel="noopener">Microsoft Learn</a> <a class="ref" href="#learn-ref-3">[3]</a>: free courses for Azure, Windows Server and Microsoft 365, organised by certification.</li>
+            <li><a href="https://skillbuilder.aws/" target="_blank" rel="noopener">AWS Skill Builder</a> <a class="ref" href="#learn-ref-4">[4]</a>: Amazon's own cloud training, with many free courses.</li>
+            <li><a href="https://www.cloudskillsboost.google/" target="_blank" rel="noopener">Google Cloud Skills Boost</a> <a class="ref" href="#learn-ref-5">[5]</a>: hands-on labs and badges for Google Cloud and Workspace.</li>
+            <li><a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">Docker</a> <a class="ref" href="#learn-ref-6">[6]</a> and <a href="https://kubernetes.io/docs/tutorials/" target="_blank" rel="noopener">Kubernetes</a> <a class="ref" href="#learn-ref-7">[7]</a> official tutorials: the best way to learn containers.</li>
+            <li><a href="https://www.freecodecamp.org/learn/" target="_blank" rel="noopener">freeCodeCamp</a> <a class="ref" href="#learn-ref-8">[8]</a>: free interactive courses for web development, Python and more.</li>
           </ul>
+
+          <h3 class="learn-heading">Sources &amp; references</h3>
+          <ol class="references">
+            <li id="learn-ref-1">GoalKicker.com, “Notes for Professionals” free book series: <a href="https://books.goalkicker.com/" target="_blank" rel="noopener">books.goalkicker.com</a></li>
+            <li id="learn-ref-2">Stack Overflow Documentation contributors, licensed CC BY-SA 3.0: <a href="https://stackoverflow.com/documentation" target="_blank" rel="noopener">stackoverflow.com/documentation</a></li>
+            <li id="learn-ref-3">Microsoft, Microsoft Learn: <a href="https://learn.microsoft.com/training/" target="_blank" rel="noopener">learn.microsoft.com/training</a></li>
+            <li id="learn-ref-4">Amazon Web Services, AWS Skill Builder: <a href="https://skillbuilder.aws/" target="_blank" rel="noopener">skillbuilder.aws</a></li>
+            <li id="learn-ref-5">Google, Google Cloud Skills Boost: <a href="https://www.cloudskillsboost.google/" target="_blank" rel="noopener">cloudskillsboost.google</a></li>
+            <li id="learn-ref-6">Docker, Get started: <a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">docs.docker.com/get-started</a></li>
+            <li id="learn-ref-7">The Kubernetes Authors, Tutorials: <a href="https://kubernetes.io/docs/tutorials/" target="_blank" rel="noopener">kubernetes.io/docs/tutorials</a></li>
+            <li id="learn-ref-8">freeCodeCamp: <a href="https://www.freecodecamp.org/learn/" target="_blank" rel="noopener">freecodecamp.org/learn</a></li>
+          </ol>
+          <p class="references-note">The learning materials above belong to their authors. This page only links to them; it is not affiliated with any of them.</p>
+
         </div>
       </section>
 
@@ -948,8 +956,6 @@
                 <p class="tea-small mb-2">Or send tea straight to my PayPal:</p>
                 <div class="tea-amounts" data-paypal-amounts></div>
               </div>
-
-              <a class="sponsor-btn" data-github-sponsors href="https://github.com/sponsors" target="_blank" rel="noopener" hidden>♥ Sponsor me on GitHub</a>
             </div>
 
             <div class="free-support">
@@ -957,8 +963,7 @@
               <ul class="fa-ul mb-0">
                 <li><i class="fa-li fa fa-share-alt" aria-hidden="true"></i><button type="button" class="link-btn" data-share>Share this website</button> with someone who is learning IT</li>
                 <li><i class="fa-li fa fa-linkedin" aria-hidden="true"></i>Connect or leave a recommendation on <a href="https://www.linkedin.com/in/fares-jalled-8537b1105/" target="_blank" rel="noopener">LinkedIn</a></li>
-                <li><i class="fa-li fa fa-github" aria-hidden="true"></i>Follow me or star a project on <a href="https://github.com/FaresJalled" target="_blank" rel="noopener">GitHub</a></li>
-                <li><i class="fa-li fa fa-envelope" aria-hidden="true"></i>Know a job or project that fits me? <a href="mailto:jalledfars@phystech.edu">Email me</a></li>
+                <li><i class="fa-li fa fa-envelope" aria-hidden="true"></i>Know a job or project that fits me? <a data-contact-link href="https://www.linkedin.com/in/fares-jalled-8537b1105/" target="_blank" rel="noopener">Write me a message</a></li>
               </ul>
             </div>
           </div>
@@ -968,8 +973,8 @@
       <footer class="site-footer p-3 px-lg-5">
         <span>© <span data-year>2026</span> Farés Jalled</span>
         <span class="visitor-bar" data-visitor-bar>
-          <span aria-hidden="true">👁</span> <span data-visitor-count></span> visitors
-          <span class="visitor-note">· counted with GoatCounter, without cookies</span>
+          <span aria-hidden="true">👁</span> <span data-visitor-count></span> <span data-visitor-word>visitors</span>
+          <span class="visitor-note">· counted anonymously, without cookies</span>
         </span>
       </footer>
 
