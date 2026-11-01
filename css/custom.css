@@ -529,22 +529,6 @@ html {
   color: #fff;
   text-decoration: none;
 }
-.sponsor-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  border: 2px solid #bf3989;
-  border-radius: 1rem;
-  padding: .2rem .8rem;
-  color: #bf3989;
-  font-weight: 700;
-  font-size: .9rem;
-}
-.sponsor-btn:hover,
-.sponsor-btn:focus {
-  background-color: #bf3989;
-  color: #fff;
-  text-decoration: none;
-}
 
 .free-support {
   flex: 1 1 18rem;
@@ -567,4 +551,41 @@ html {
 .link-btn:hover,
 .link-btn:focus {
   text-decoration: underline;
+}
+
+/* ---------- Visitor count in the phone top bar ---------- */
+
+.visitor-chip-mobile {
+  margin-left: auto;
+  margin-right: .75rem;
+  padding: .15rem .6rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, .2);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------- References ---------- */
+
+.ref {
+  font-size: .75em;
+  vertical-align: super;
+  line-height: 0;
+  font-weight: 600;
+}
+.references {
+  padding-left: 1.5rem;
+  font-size: .9rem;
+}
+.references li {
+  margin-bottom: .4rem;
+  scroll-margin-top: 4rem;
+}
+.references li:target {
+  background-color: #e3eed6;
+}
+.references-note {
+  font-size: .85rem;
 }

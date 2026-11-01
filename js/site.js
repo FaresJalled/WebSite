@@ -79,60 +79,50 @@
     });
   });
 
-  /* ---------- Visitor counter + visit emails ---------- */
-  // Visit the site once with ?owner=on to stop counting/emailing your own visits
-  // in that browser, and ?owner=off to undo it.
+  /* ---------- Visitor counter + visit e-mails (Supabase / PostgreSQL) ----------
+     Each page view calls the database function record_visit(), which stores
+     the visit, e-mails the owner for a new visitor and returns the totals.
+     No cookies and nothing stored on the visitor's device. */
   var params = new URLSearchParams(window.location.search);
   if (params.get('owner') === 'on') store.set('fj-owner', '1');
   if (params.get('owner') === 'off') store.set('fj-owner', null);
   var isOwner = store.get('fj-owner') === '1';
   var isBot = navigator.webdriver || /bot|crawl|spider|slurp|headless|lighthouse|preview/i.test(navigator.userAgent);
-  var code = (cfg.goatcounterCode || '').trim();
+  var sbUrl = (cfg.supabaseUrl || '').trim().replace(/\/+$/, '');
+  var sbKey = (cfg.supabaseKey || '').trim();
 
-  if (code) {
-    var base = 'https://' + encodeURIComponent(code) + '.goatcounter.com';
-    if (!isOwner && !isBot) {
-      var counter = document.createElement('script');
-      counter.async = true;
-      counter.src = 'https://gc.zgo.at/count.js';
-      counter.setAttribute('data-goatcounter', base + '/count');
-      document.head.appendChild(counter);
-    }
-    if (window.fetch && $('[data-visitor-bar]')) {
-      fetch(base + '/counter/TOTAL.json')
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function (data) {
-          if (!data || !data.count) return;
-          $$('[data-visitor-count]').forEach(function (el) { el.textContent = data.count; });
-          $$('[data-visitor-bar]').forEach(function (el) { el.classList.add('is-ready'); });
-        })
-        .catch(function () { /* counter not set up yet: keep the bar hidden */ });
-    }
+  if (sbUrl && sbKey && window.fetch) {
+    var headers = { 'apikey': sbKey, 'Content-Type': 'application/json' };
+    if (/^eyJ/.test(sbKey)) headers.Authorization = 'Bearer ' + sbKey; // older "anon" keys
+    var record = !isOwner && !isBot;
+    var tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { /* ignore */ }
+    fetch(sbUrl + '/rest/v1/rpc/' + (record ? 'record_visit' : 'visit_stats'), {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(record ? {
+        p_page: window.location.pathname + window.location.hash,
+        p_referrer: (document.referrer || '').split('?')[0],
+        p_language: navigator.language || '',
+        p_timezone: tz,
+        p_screen: window.screen.width + 'x' + window.screen.height
+      } : {})
+    })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (stats) {
+        var n = Number(stats && stats.visitors);
+        if (!n) return;
+        var text = n.toLocaleString('en-US');
+        $$('[data-visitor-count]').forEach(function (el) { el.textContent = text; });
+        $$('[data-visitor-word]').forEach(function (el) { el.textContent = n === 1 ? 'visitor' : 'visitors'; });
+        $$('[data-visitor-bar]').forEach(function (el) { el.classList.add('is-ready'); });
+      })
+      .catch(function () { /* database not set up yet: keep the counter hidden */ });
   }
 
-  var formId = (cfg.formsubmitId || '').trim();
-  if (formId && !isOwner && !isBot && window.fetch) {
-    var last = parseInt(store.get('fj-visit-mailed') || '0', 10);
-    var gapMs = (cfg.emailEveryHours || 24) * 3600 * 1000;
-    if (Date.now() - last > gapMs) {
-      store.set('fj-visit-mailed', String(Date.now()));
-      var tz = '';
-      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) { /* ignore */ }
-      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(formId), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          _subject: 'New visitor on ' + window.location.hostname,
-          _template: 'table',
-          page: window.location.pathname + window.location.hash,
-          came_from: document.referrer || '(typed the address or used a bookmark)',
-          time: new Date().toString(),
-          language: navigator.language || '',
-          timezone: tz,
-          screen: window.screen.width + ' x ' + window.screen.height
-        })
-      }).catch(function () { store.set('fj-visit-mailed', String(last)); });
-    }
+  /* ---------- Contact link (external form, so no e-mail address on the site) ---------- */
+  if (cfg.contactUrl) {
+    $$('[data-contact-link]').forEach(function (a) { a.href = cfg.contactUrl; });
   }
 
   /* ---------- Tipping ---------- */
@@ -154,11 +144,6 @@
       amounts.appendChild(a);
     });
     paypalBox.hidden = false;
-  }
-  var sponsor = $('[data-github-sponsors]');
-  if (sponsor && cfg.githubSponsors) {
-    sponsor.href = 'https://github.com/sponsors/' + encodeURIComponent(cfg.githubSponsors);
-    sponsor.hidden = false;
   }
 
   /* ---------- Share button ---------- */
