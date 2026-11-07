@@ -76,9 +76,6 @@
             <a class="nav-link" href="#learn">Learn IT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="learn-it.html">IT Library</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#interests">Interests</a>
           </li>
           <li class="nav-item">
@@ -93,20 +90,39 @@
 
     <div class="container-fluid p-0">
 
+      <!-- News ticker: scrolls slowly, pauses on hover / focus; static for "reduce motion" -->
+      <div class="ticker" aria-label="Latest news">
+        <div class="ticker-track" data-ticker>
+          <span class="ticker-item">🎓 New: Scientific Assistant at the <a href="#experience">Maser Collective, Saarland University</a></span>
+          <span class="ticker-item">🏆 German Research Foundation Ph.D. project 2026–2029</span>
+          <span class="ticker-item">🐧 Red Hat Certified System Administrator (RHCSA)</span>
+          <span class="ticker-item">📚 48 free IT books in my <a href="#library">IT library</a></span>
+          <span class="ticker-item">☁️ Linux · DevOps · AWS · Azure · Kubernetes</span>
+          <span class="ticker-item">✉️ Open to IT projects &amp; collaborations: <button type="button" class="link-btn" data-contact-open>write me a message</button></span>
+        </div>
+      </div>
+
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="about">
         <div class="my-auto">
-          <h3> Mesdames, Messieurs, welcome to my Personal Website </h3>
-          <h1 class="mb-0"> FARÉS
+          <h3 class="hero-hello"> Mesdames, Messieurs, welcome to my Personal Website </h3>
+          <h1 class="mb-0 hero-name"> FARÉS
             <span class="text-primary"> Jalled </span>
             <span class="degree"> M.Sc. </span>
           </h1>
-          <div class="subheading mb-5">Berlin · Germany ·
-            <a data-contact-link href="https://www.linkedin.com/in/fares-jalled-8537b1105/" target="_blank" rel="noopener">✉ Write me a message</a>
+          <p class="hero-typing">I am a <span class="typed" data-typed='["Linux &amp; DevOps engineer", "Red Hat Certified System Administrator", "Ph.D. researcher at the Maser Collective", "cloud enthusiast: AWS &amp; Azure", "professional swimmer &amp; marathon runner"]'>Linux &amp; DevOps engineer</span><span class="typed-caret" aria-hidden="true"></span></p>
+          <div class="subheading mb-4">Berlin · Germany ·
+            <button type="button" class="link-btn hero-msg" data-contact-open>✉ Write me a message</button>
+          </div>
+          <div class="hero-actions mb-5">
+            <button type="button" class="btn-hero btn-hero--primary" data-contact-open><i class="fa fa-paper-plane" aria-hidden="true"></i> Contact me</button>
+            <a class="btn-hero" href="#library"><i class="fa fa-book" aria-hidden="true"></i> Free IT library</a>
+            <a class="btn-hero" href="#experience"><i class="fa fa-briefcase" aria-hidden="true"></i> My experience</a>
+            <span class="hero-visitors" data-visitor-bar><span aria-hidden="true">👁</span> <b data-visitor-count></b> <span data-visitor-word>visitors</span></span>
           </div>
           <p class="mb-5"><b>
             I'm a professional swimmer with a deep passion for running and marathon. I also have a strong love for 'STEML' Science, Technology, Engineering, Mathematics, and Languages, especially in areas like Plasma physics, semiconductors, IT administration, electronics, and programming. My journey has taken me across the globe, living in five countries on three continents, where I've enjoyed immersing myself in diverse cultures and civilizations.
             <br>
-            If you ever need IT consultation, advice, or are interested in collaborating, please don't hesitate to email me or connect with me on career networks.
+            If you ever need IT consultation, advice, or are interested in collaborating, please don't hesitate to <button type="button" class="link-btn" data-contact-open>write me a message</button> or connect with me on career networks.
           </b></p>
 
           <h3> Where to find me ? </h3>
@@ -153,13 +169,28 @@
             <!-- <span style="font-size: 30px;"> mostly in Germany </span> -->
           </h2>
 
+          <div class="resume-item resume-item--current d-flex flex-column flex-md-row mb-3">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">Scientific Assistant <span class="now-badge">Current</span></h3>
+              <div class="subheading mb-2">Saarland University · Maser Collective · Chair of Prof. Dr. Christopher Kay · Saarbrücken</div>
+              <img class="maser-logo" src="img/maser-collective.webp" alt="Maser Collective" width="225" height="35" loading="lazy" decoding="async">
+              <p class="mb-3">
+                <a class="GFG" href="https://www.uni-saarland.de/en/chair/kay.html" target="_blank" rel="noopener">Chair page</a>
+                <a class="GFG" href="https://www.uni-saarland.de/en/lehrstuhl/kay/maser-collective.html" target="_blank" rel="noopener">Maser Collective</a>
+              </p>
+            </div>
+            <div class="resume-date text-md-right">
+              <span class="text-primary">July 2026 - Present</span>
+            </div>
+          </div>
+
           <div class="resume-item d-flex flex-column flex-md-row mb-3">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">Red Hat Certified System Administrator (RHCSA) Certification</h3>
               <div class="subheading mb-3">Red Hat Certified System Administrator · BERLIN</div>
             </div>
             <div class="resume-date text-md-right">
-              <span class="text-primary">January 2026 - April 2026</span>
+              <span class="text-primary">January 2026 - June 2026</span>
             </div>
           </div>
 
@@ -434,7 +465,7 @@
             <li class="list-inline-item"><img src="img/logos/ansible.svg" alt="Ansible" title="Ansible" width="46" height="56" loading="lazy" decoding="async"></li>
             <li class="list-inline-item"><img src="img/logos/git.svg" alt="Git" title="Git" width="124" height="56" loading="lazy" decoding="async"></li>
             <li class="list-inline-item"><img src="img/logos/github.webp" alt="GitHub" title="GitHub" width="62" height="56" loading="lazy" decoding="async"></li>
-            <li class="list-inline-item"><img src="img/logos/office365.svg" alt="Microsoft Office 365" title="Microsoft Office 365" width="170" height="56" loading="lazy" decoding="async"></li>
+            <li class="list-inline-item logo-combo" title="Microsoft 365"><img src="img/logos/microsoft-365.svg" alt="" width="52" height="56" loading="lazy" decoding="async"><span class="logo-combo-name logo-combo-name--ms">Microsoft 365</span></li>
             <li class="list-inline-item"><img src="img/logos/microsoft-365-apps.webp" alt="Microsoft 365 apps" title="Microsoft 365 apps" width="141" height="56" loading="lazy" decoding="async"></li>
             <li class="list-inline-item"><img src="img/logos/slack.svg" alt="Slack" title="Slack" width="189" height="56" loading="lazy" decoding="async"></li>
             <li class="list-inline-item"><img src="img/logos/vscode.webp" alt="Visual Studio Code" title="Visual Studio Code" width="230" height="56" loading="lazy" decoding="async"></li>
@@ -442,7 +473,7 @@
             <li class="list-inline-item"><img src="img/logos/google-drive.webp" alt="Google Drive" title="Google Drive" width="148" height="56" loading="lazy" decoding="async"></li>
             <li class="list-inline-item"><img src="img/logos/dropbox.svg" alt="Dropbox" title="Dropbox" width="65" height="56" loading="lazy" decoding="async"></li>
             <li class="list-inline-item"><img src="img/logos/axxerion.webp" alt="Axxerion" title="Axxerion" width="176" height="56" loading="lazy" decoding="async"></li>
-            <li class="list-inline-item"><img src="img/logos/zabbix.svg" alt="Zabbix" title="Zabbix" width="150" height="56" loading="lazy" decoding="async"></li>
+            <li class="list-inline-item logo-combo" title="Zabbix monitoring"><img src="img/logos/zabbix.svg" alt="" width="56" height="56" loading="lazy" decoding="async"><span class="logo-combo-name logo-combo-name--zabbix">ZABBIX</span></li>
             <li class="list-inline-item"><img src="img/logos/tanss.webp" alt="TANSS" title="TANSS" width="230" height="56" loading="lazy" decoding="async"></li>
             <li class="list-inline-item"><img src="img/logos/redmine.webp" alt="Redmine" title="Redmine" width="204" height="56" loading="lazy" decoding="async"></li>
             <li class="list-inline-item"><img src="img/logos/proxmox-ceph.webp" alt="Proxmox and Ceph" title="Proxmox and Ceph" width="193" height="56" loading="lazy" decoding="async"></li>
@@ -507,21 +538,16 @@
           <h2 class="mb-5">Languages</h2>
 
           <h3>I do speak</h3>
-     
-          <div class="bar back expert" 
-               data-skill="French"></div>
-          <div class="bar back expert" 
-               data-skill="Tunisian"></div>
-          <div class="bar front advanced" 
-               data-skill="English"></div>
-          <div class="bar front advanced" 
-               data-skill="Russian"></div>
-          <div class="bar front intermediate" 
-               data-skill="German"></div>
-          <div class="bar front basic" 
-               data-skill="Spanish"></div>
-          <div class="bar front basic" 
-               data-skill="Catalan"></div>  
+
+          <div class="lang-bars">
+            <div class="bar" style="--level: 95%" data-skill="French"></div>
+            <div class="bar" style="--level: 95%" data-skill="Tunisian"></div>
+            <div class="bar" style="--level: 88%" data-skill="English"></div>
+            <div class="bar" style="--level: 70%" data-skill="German"></div>
+            <div class="bar" style="--level: 76%" data-skill="Russian"></div>
+            <div class="bar" style="--level: 50%" data-skill="Spanish"></div>
+            <div class="bar" style="--level: 38%" data-skill="Catalan"></div>
+          </div>
 
         </div>
       </section>
@@ -533,6 +559,12 @@
           
           <h2 class="mb-5">Awards &amp; Scholarships</h2>
           <ul class="fa-ul mb-0">
+
+          <li class="award-new">
+          <i class="fa-li fa fa-trophy text-warning"></i>
+          German Research Foundation Ph.D. Project Winner · Saarland University 2026-2029
+          <a class="GFG" href="https://www.uni-saarland.de/en/lehrstuhl/kay/maser-collective.html" target="_blank" rel="noopener">Maser Collective</a>
+          </li>
 
           <li>
           <i class="fa-li fa fa-trophy text-warning"></i>
@@ -546,8 +578,20 @@
           <li>
           <i class="fa-li fa fa-trophy text-warning"></i>
           Russian Government Master's Degree Scholarship Winner "5/100 Russian Academic Excellence Project" · MIPT Institute · Moscow 2015-2017 </li>
-        
+
         </ul>
+
+          <figure class="group-photo">
+            <img src="img/research-group-1600.webp"
+                 srcset="img/research-group-800.webp 800w, img/research-group-1600.webp 1600w"
+                 sizes="(min-width: 992px) min(60rem, calc(100vw - 22rem)), calc(100vw - 2rem)"
+                 alt="Group photo of my research group, the ESR group of Prof. Dr. Christopher Kay at Saarland University, October 2026"
+                 width="1600" height="835" loading="lazy" decoding="async">
+            <figcaption>
+              <b>My research group</b> · ESR group of Prof. Dr. Christopher Kay, Saarland University, October 2026
+              <span class="photo-credit">Photo © ESR Gruppe, Universität des Saarlandes</span>
+            </figcaption>
+          </figure>
         </div>
 
       </section>
@@ -779,126 +823,607 @@
             IT means Information Technology: the computers, networks, operating systems, software and data that every
             organisation runs on. Whether you want to become a system administrator, a cloud or DevOps engineer,
             a developer or a data analyst, you can start for free. Pick a learning path below and work through it
-            book by book, or browse my free IT library.
+            book by book, or browse my free <a href="#library">IT library</a> right here.
           </p>
 
-          <h3 class="learn-heading">Learning paths <span class="learn-count">based on the books in <a class="ref" href="#learn-ref-1">[1]</a></span></h3>
+          <h3 class="learn-heading">Learning paths <span class="learn-count">5 free paths · based on the books in <a class="ref" href="#learn-ref-1">[1]</a></span></h3>
           <div class="paths">
-            <div class="path">
-              <h4 class="path-title"><span aria-hidden="true">🐧</span> System administrator</h4>
-              <p class="path-blurb">Run and secure servers and networks.</p>
+            <div class="path cat-systems">
+              <div class="path-head"><span class="path-icon" aria-hidden="true">🐧</span>
+                <div><h4 class="path-title">System administrator</h4><p class="path-blurb">Run and secure servers and networks.</p></div></div>
               <ol class="path-steps">
-                <li><a href="learn-it.html#linux">Linux</a></li>
-                <li><a href="learn-it.html#bash">Bash</a></li>
-                <li><a href="learn-it.html#powershell">PowerShell</a></li>
-                <li><a href="learn-it.html#git">Git</a></li>
-                <li><a href="learn-it.html#sql">SQL</a></li>
+                <li><a href="#linux" data-book-link>Linux</a></li>
+                <li><a href="#bash" data-book-link>Bash</a></li>
+                <li><a href="#powershell" data-book-link>PowerShell</a></li>
+                <li><a href="#git" data-book-link>Git</a></li>
+                <li><a href="#sql" data-book-link>SQL</a></li>
               </ol>
             </div>
-            <div class="path">
-              <h4 class="path-title"><span aria-hidden="true">☁️</span> Cloud &amp; DevOps</h4>
-              <p class="path-blurb">Automate infrastructure and deployments.</p>
+            <div class="path cat-frameworks">
+              <div class="path-head"><span class="path-icon" aria-hidden="true">🚀</span>
+                <div><h4 class="path-title">Cloud &amp; DevOps</h4><p class="path-blurb">Automate infrastructure and deployments.</p></div></div>
               <ol class="path-steps">
-                <li><a href="learn-it.html#linux">Linux</a></li>
-                <li><a href="learn-it.html#bash">Bash</a></li>
-                <li><a href="learn-it.html#git">Git</a></li>
-                <li><a href="learn-it.html#python">Python</a></li>
-                <li><a href="learn-it.html#nodejs">Node.js</a></li>
+                <li><a href="#linux" data-book-link>Linux</a></li>
+                <li><a href="#bash" data-book-link>Bash</a></li>
+                <li><a href="#git" data-book-link>Git</a></li>
+                <li><a href="#python" data-book-link>Python</a></li>
+                <li><a href="#nodejs" data-book-link>Node.js</a></li>
               </ol>
             </div>
-            <div class="path">
-              <h4 class="path-title"><span aria-hidden="true">💻</span> Programming</h4>
-              <p class="path-blurb">Learn to think like a developer.</p>
+            <div class="path cat-languages">
+              <div class="path-head"><span class="path-icon" aria-hidden="true">💻</span>
+                <div><h4 class="path-title">Programming</h4><p class="path-blurb">Learn to think like a developer.</p></div></div>
               <ol class="path-steps">
-                <li><a href="learn-it.html#python">Python</a></li>
-                <li><a href="learn-it.html#algorithms">Algorithms</a></li>
-                <li><a href="learn-it.html#c">C</a></li>
-                <li><a href="learn-it.html#java">Java</a></li>
-                <li><a href="learn-it.html#csharp">C#</a></li>
+                <li><a href="#python" data-book-link>Python</a></li>
+                <li><a href="#algorithms" data-book-link>Algorithms</a></li>
+                <li><a href="#c" data-book-link>C</a></li>
+                <li><a href="#java" data-book-link>Java</a></li>
+                <li><a href="#csharp" data-book-link>C#</a></li>
               </ol>
             </div>
-            <div class="path">
-              <h4 class="path-title"><span aria-hidden="true">🌐</span> Web development</h4>
-              <p class="path-blurb">Build websites and web apps.</p>
+            <div class="path cat-web">
+              <div class="path-head"><span class="path-icon" aria-hidden="true">🌐</span>
+                <div><h4 class="path-title">Web development</h4><p class="path-blurb">Build websites and web apps.</p></div></div>
               <ol class="path-steps">
-                <li><a href="learn-it.html#html5">HTML5</a></li>
-                <li><a href="learn-it.html#css">CSS</a></li>
-                <li><a href="learn-it.html#javascript">JavaScript</a></li>
-                <li><a href="learn-it.html#typescript">TypeScript</a></li>
-                <li><a href="learn-it.html#react">React JS</a></li>
+                <li><a href="#html5" data-book-link>HTML5</a></li>
+                <li><a href="#css" data-book-link>CSS</a></li>
+                <li><a href="#javascript" data-book-link>JavaScript</a></li>
+                <li><a href="#typescript" data-book-link>TypeScript</a></li>
+                <li><a href="#react" data-book-link>React JS</a></li>
               </ol>
             </div>
-            <div class="path">
-              <h4 class="path-title"><span aria-hidden="true">📊</span> Data &amp; science</h4>
-              <p class="path-blurb">Analyse data and publish results.</p>
+            <div class="path cat-science">
+              <div class="path-head"><span class="path-icon" aria-hidden="true">📊</span>
+                <div><h4 class="path-title">Data &amp; science</h4><p class="path-blurb">Analyse data and publish results.</p></div></div>
               <ol class="path-steps">
-                <li><a href="learn-it.html#sql">SQL</a></li>
-                <li><a href="learn-it.html#python">Python</a></li>
-                <li><a href="learn-it.html#r">R</a></li>
-                <li><a href="learn-it.html#matlab">MATLAB</a></li>
-                <li><a href="learn-it.html#latex">LaTeX</a></li>
+                <li><a href="#sql" data-book-link>SQL</a></li>
+                <li><a href="#python" data-book-link>Python</a></li>
+                <li><a href="#r" data-book-link>R</a></li>
+                <li><a href="#matlab" data-book-link>MATLAB</a></li>
+                <li><a href="#latex" data-book-link>LaTeX</a></li>
               </ol>
             </div>
           </div>
 
-          <h3 class="learn-heading">Free IT library <span class="learn-count">48 books</span></h3>
-          <p>
+          <h3 class="learn-heading" id="library">Free IT library <span class="learn-count">48 books</span></h3>
+          <p class="library-intro">
             The GoalKicker “Notes for Professionals” books <a class="ref" href="#learn-ref-1">[1]</a> are free PDFs written by
-            Stack Overflow contributors <a class="ref" href="#learn-ref-2">[2]</a>. They are not mine: my library lists each one in its own
-            section, with a short summary and a link to the original.
+            Stack Overflow contributors <a class="ref" href="#learn-ref-2">[2]</a>. I did not write them: my library sorts them by topic,
+            with a short summary and a link to the original. Books marked <span class="book-badge">In my toolbox</span> cover tools I use myself.
           </p>
-          <div class="library-tiles">
-            <a class="library-tile cat-systems" href="learn-it.html#cat-systems">
-              <span class="library-tile-name"><span aria-hidden="true">🐧</span> Systems &amp; DevOps</span>
-              <span class="library-tile-books">Linux · Bash · PowerShell · Git</span>
-            </a>
-            <a class="library-tile cat-languages" href="learn-it.html#cat-languages">
-              <span class="library-tile-name"><span aria-hidden="true">💻</span> Programming languages</span>
-              <span class="library-tile-books">C · C++ · C# · Java · Python · Kotlin · Swift · Objective-C · Haskell · Perl · Ruby · Visual Basic .NET</span>
-            </a>
-            <a class="library-tile cat-web" href="learn-it.html#cat-web">
-              <span class="library-tile-name"><span aria-hidden="true">🌐</span> Web development</span>
-              <span class="library-tile-books">HTML5 · CSS · JavaScript · TypeScript · HTML5 Canvas · jQuery · AngularJS · Angular 2+ · React JS · Node.js · PHP · Ruby on Rails</span>
-            </a>
-            <a class="library-tile cat-databases" href="learn-it.html#cat-databases">
-              <span class="library-tile-name"><span aria-hidden="true">🗄️</span> Databases</span>
-              <span class="library-tile-books">SQL · MySQL · PostgreSQL · Microsoft SQL Server · Oracle Database · MongoDB</span>
-            </a>
-            <a class="library-tile cat-frameworks" href="learn-it.html#cat-frameworks">
-              <span class="library-tile-name"><span aria-hidden="true">🧩</span> .NET &amp; Java frameworks</span>
-              <span class="library-tile-books">.NET Framework · Entity Framework · Spring Framework · Hibernate</span>
-            </a>
-            <a class="library-tile cat-mobile" href="learn-it.html#cat-mobile">
-              <span class="library-tile-name"><span aria-hidden="true">📱</span> Mobile apps</span>
-              <span class="library-tile-books">Android · iOS · React Native · Xamarin.Forms</span>
-            </a>
-            <a class="library-tile cat-science" href="learn-it.html#cat-science">
-              <span class="library-tile-name"><span aria-hidden="true">📊</span> Data, science &amp; office</span>
-              <span class="library-tile-books">Algorithms · R · MATLAB · LaTeX · VBA · Excel VBA</span>
-            </a>
+          <div class="library-tools" data-library-tools hidden>
+            <label class="sr-only" for="book-search">Search the library</label>
+            <input class="book-search" id="book-search" type="search" placeholder="Search 48 books, e.g. “Python”, “database”, “Windows”…" autocomplete="off">
+            <div class="library-tabs" role="group" aria-label="Show books by topic">
+              <button type="button" class="library-tab is-active" data-cat="all" aria-pressed="true">📚 All <span>48</span></button>
+              <button type="button" class="library-tab cat-systems" data-cat="cat-systems" aria-pressed="false">🐧 Systems &amp; DevOps <span>4</span></button>
+              <button type="button" class="library-tab cat-languages" data-cat="cat-languages" aria-pressed="false">💻 Programming languages <span>12</span></button>
+              <button type="button" class="library-tab cat-web" data-cat="cat-web" aria-pressed="false">🌐 Web development <span>12</span></button>
+              <button type="button" class="library-tab cat-databases" data-cat="cat-databases" aria-pressed="false">🗄️ Databases <span>6</span></button>
+              <button type="button" class="library-tab cat-frameworks" data-cat="cat-frameworks" aria-pressed="false">🧩 .NET &amp; Java frameworks <span>4</span></button>
+              <button type="button" class="library-tab cat-mobile" data-cat="cat-mobile" aria-pressed="false">📱 Mobile apps <span>4</span></button>
+              <button type="button" class="library-tab cat-science" data-cat="cat-science" aria-pressed="false">📊 Data, science &amp; office <span>6</span></button>
+            </div>
           </div>
-          <a class="library-btn" href="learn-it.html">Open the IT library →</a>
+          <p class="book-search-empty" id="book-search-empty" hidden>No book matches your search.</p>
+          <div class="book-shelf" id="book-shelf">
+            <article class="book-card cat-systems" id="linux" data-cat="cat-systems" aria-labelledby="linux-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Linux</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="linux-title">Linux <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">🐧 Systems &amp; DevOps · 65 pages · free PDF</p>
+                <p class="book-desc">The command-line essentials for working on Linux servers: files and permissions, processes, packages and services. The foundation for system administration, cloud and DevOps work.</p>
+                <a class="book-link" href="https://books.goalkicker.com/LinuxBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-systems" id="bash" data-cat="cat-systems" aria-labelledby="bash-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Bash</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="bash-title">Bash <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">🐧 Systems &amp; DevOps · 204 pages · May 2019 · free PDF</p>
+                <p class="book-desc">Shell scripting from the first commands to arrays, parameter expansion and job control. Automate repetitive admin tasks instead of doing them by hand.</p>
+                <a class="book-link" href="https://books.goalkicker.com/BashBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-systems" id="powershell" data-cat="cat-systems" aria-labelledby="powershell-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">PowerShell</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="powershell-title">PowerShell</h4>
+                <p class="book-meta">🐧 Systems &amp; DevOps · 184 pages · May 2019 · free PDF</p>
+                <p class="book-desc">Microsoft's object-based shell for automating Windows, Active Directory and Azure: variables, functions, remoting, DSC and security.</p>
+                <a class="book-link" href="https://books.goalkicker.com/PowerShellBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-systems" id="git" data-cat="cat-systems" aria-labelledby="git-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Git</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="git-title">Git <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">🐧 Systems &amp; DevOps · 195 pages · May 2019 · free PDF</p>
+                <p class="book-desc">Version control for code and configuration, from setup and branching to rebasing, submodules and hooks. Essential for teamwork and CI/CD.</p>
+                <a class="book-link" href="https://books.goalkicker.com/GitBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="c" data-cat="cat-languages" aria-labelledby="c-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">C</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="c-title">C <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">💻 Programming languages · free PDF</p>
+                <p class="book-desc">The language behind operating systems, embedded devices and many other languages. Teaches how memory, pointers and the machine really work.</p>
+                <a class="book-link" href="https://books.goalkicker.com/CBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="cpp" data-cat="cat-languages" aria-labelledby="cpp-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">C++</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="cpp-title">C++</h4>
+                <p class="book-meta">💻 Programming languages · free PDF</p>
+                <p class="book-desc">C with classes, templates and the standard library; used for performance-critical software such as games, browsers and simulations.</p>
+                <a class="book-link" href="https://books.goalkicker.com/CPlusPlusBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="csharp" data-cat="cat-languages" aria-labelledby="csharp-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">C#</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="csharp-title">C#</h4>
+                <p class="book-meta">💻 Programming languages · 808 pages · May 2019 · free PDF</p>
+                <p class="book-desc">Microsoft's main .NET language for desktop, web and cloud apps, from the basics to LINQ, databases and design patterns.</p>
+                <a class="book-link" href="https://books.goalkicker.com/CSharpBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="java" data-cat="cat-languages" aria-labelledby="java-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Java</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="java-title">Java</h4>
+                <p class="book-meta">💻 Programming languages · free PDF</p>
+                <p class="book-desc">A mature, strongly typed language that runs wherever the JVM does; widely used for enterprise back ends and Android.</p>
+                <a class="book-link" href="https://goalkicker.com/JavaBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="python" data-cat="cat-languages" aria-labelledby="python-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Python</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="python-title">Python <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">💻 Programming languages · 816 pages · June 2018 · free PDF</p>
+                <p class="book-desc">Readable and versatile: scripting, automation, data science, machine learning and web back ends. A great first language and an everyday tool for admins.</p>
+                <a class="book-link" href="https://goalkicker.com/PythonBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="kotlin" data-cat="cat-languages" aria-labelledby="kotlin-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Kotlin</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="kotlin-title">Kotlin</h4>
+                <p class="book-meta">💻 Programming languages · free PDF</p>
+                <p class="book-desc">A modern, concise JVM language and Google's preferred language for Android development.</p>
+                <a class="book-link" href="https://books.goalkicker.com/KotlinBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="swift" data-cat="cat-languages" aria-labelledby="swift-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Swift</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="swift-title">Swift</h4>
+                <p class="book-meta">💻 Programming languages · free PDF</p>
+                <p class="book-desc">Apple's language for iOS and macOS apps: optionals, protocols, concurrency and the Swift Package Manager.</p>
+                <a class="book-link" href="https://books.goalkicker.com/SwiftBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="objective-c" data-cat="cat-languages" aria-labelledby="objective-c-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">Objective-C</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="objective-c-title">Objective-C</h4>
+                <p class="book-meta">💻 Programming languages · free PDF</p>
+                <p class="book-desc">The original language of Apple platforms, still found in many existing iOS and macOS code bases.</p>
+                <a class="book-link" href="https://books.goalkicker.com/ObjectiveCBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="haskell" data-cat="cat-languages" aria-labelledby="haskell-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Haskell</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="haskell-title">Haskell</h4>
+                <p class="book-meta">💻 Programming languages · 230 pages · May 2019 · free PDF</p>
+                <p class="book-desc">A purely functional language. Its ideas (monads, type classes, immutability) sharpen how you think about code in any language.</p>
+                <a class="book-link" href="https://goalkicker.com/HaskellBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="perl" data-cat="cat-languages" aria-labelledby="perl-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Perl</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="perl-title">Perl</h4>
+                <p class="book-meta">💻 Programming languages · free PDF</p>
+                <p class="book-desc">A classic text-processing and system-administration language, still found in many Unix scripts and older tools.</p>
+                <a class="book-link" href="https://books.goalkicker.com/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="ruby" data-cat="cat-languages" aria-labelledby="ruby-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Ruby</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="ruby-title">Ruby</h4>
+                <p class="book-meta">💻 Programming languages · 235 pages · May 2018 · free PDF</p>
+                <p class="book-desc">An expressive language designed for programmer happiness: blocks, metaprogramming and gems.</p>
+                <a class="book-link" href="https://books.goalkicker.com/RubyBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-languages" id="vbnet" data-cat="cat-languages" aria-labelledby="vbnet-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Visual Basic .NET</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="vbnet-title">Visual Basic .NET</h4>
+                <p class="book-meta">💻 Programming languages · free PDF</p>
+                <p class="book-desc">The .NET version of Visual Basic, common in business software and Windows desktop applications.</p>
+                <a class="book-link" href="https://books.goalkicker.com/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="html5" data-cat="cat-web" aria-labelledby="html5-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">HTML5</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="html5-title">HTML5 <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">🌐 Web development · free PDF</p>
+                <p class="book-desc">The structure of every web page: semantic elements, forms, media and accessibility basics.</p>
+                <a class="book-link" href="https://books.goalkicker.com/HTML5Book/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="css" data-cat="cat-web" aria-labelledby="css-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">CSS</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="css-title">CSS <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">🌐 Web development · free PDF</p>
+                <p class="book-desc">Styling and layout for the web: selectors, the box model, flexbox, responsive design and animations.</p>
+                <a class="book-link" href="https://books.goalkicker.com/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="javascript" data-cat="cat-web" aria-labelledby="javascript-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">JavaScript</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="javascript-title">JavaScript <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">🌐 Web development · free PDF</p>
+                <p class="book-desc">The language of the browser (and, with Node.js, the server), from the basics to asynchronous code and the DOM.</p>
+                <a class="book-link" href="https://books.goalkicker.com/JavaScriptBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="typescript" data-cat="cat-web" aria-labelledby="typescript-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">TypeScript</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="typescript-title">TypeScript</h4>
+                <p class="book-meta">🌐 Web development · 97 pages · May 2018 · free PDF</p>
+                <p class="book-desc">JavaScript with static types: catches bugs early and makes large code bases easier to maintain.</p>
+                <a class="book-link" href="https://books.goalkicker.com/TypeScriptBook2/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="html5-canvas" data-cat="cat-web" aria-labelledby="html5-canvas-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">HTML5 Canvas</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="html5-canvas-title">HTML5 Canvas</h4>
+                <p class="book-meta">🌐 Web development · free PDF</p>
+                <p class="book-desc">Drawing graphics and animations in the browser: text, paths, transformations, collisions and compositing.</p>
+                <a class="book-link" href="https://books.goalkicker.com/HTML5CanvasBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="jquery" data-cat="cat-web" aria-labelledby="jquery-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">jQuery</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="jquery-title">jQuery</h4>
+                <p class="book-meta">🌐 Web development · 67 pages · June 2018 · free PDF</p>
+                <p class="book-desc">The library that simplified DOM manipulation and AJAX; still present on many existing websites.</p>
+                <a class="book-link" href="https://books.goalkicker.com/jQueryBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="angularjs" data-cat="cat-web" aria-labelledby="angularjs-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">AngularJS</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="angularjs-title">AngularJS</h4>
+                <p class="book-meta">🌐 Web development · free PDF</p>
+                <p class="book-desc">The original Angular framework (1.x). Mainly useful today for maintaining older web applications.</p>
+                <a class="book-link" href="https://books.goalkicker.com/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="angular" data-cat="cat-web" aria-labelledby="angular-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Angular 2+</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="angular-title">Angular 2+</h4>
+                <p class="book-meta">🌐 Web development · free PDF</p>
+                <p class="book-desc">Google's component-based framework for large single-page apps: components, routing and state management with ngrx.</p>
+                <a class="book-link" href="https://books.goalkicker.com/Angular2Book/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="react" data-cat="cat-web" aria-labelledby="react-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">React JS</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="react-title">React JS</h4>
+                <p class="book-meta">🌐 Web development · 110 pages · May 2018 · free PDF</p>
+                <p class="book-desc">A library for building user interfaces from reusable components.</p>
+                <a class="book-link" href="https://books.goalkicker.com/ReactJSBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="nodejs" data-cat="cat-web" aria-labelledby="nodejs-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Node.js</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="nodejs-title">Node.js</h4>
+                <p class="book-meta">🌐 Web development · 334 pages · May 2018 · free PDF</p>
+                <p class="book-desc">JavaScript on the server: web servers, APIs, command-line tools and the npm ecosystem.</p>
+                <a class="book-link" href="https://books.goalkicker.com/NodeJSBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="php" data-cat="cat-web" aria-labelledby="php-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">PHP</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="php-title">PHP <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">🌐 Web development · free PDF</p>
+                <p class="book-desc">The server-side language behind WordPress and a large part of the web; pairs naturally with MySQL.</p>
+                <a class="book-link" href="https://books.goalkicker.com/PHPBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-web" id="rails" data-cat="cat-web" aria-labelledby="rails-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Ruby on Rails</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="rails-title">Ruby on Rails</h4>
+                <p class="book-meta">🌐 Web development · 231 pages · May 2018 · free PDF</p>
+                <p class="book-desc">Ruby's full-stack web framework: routing, ActiveRecord, migrations and testing.</p>
+                <a class="book-link" href="https://books.goalkicker.com/RubyOnRailsBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-databases" id="sql" data-cat="cat-databases" aria-labelledby="sql-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">SQL</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="sql-title">SQL <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">🗄️ Databases · 166 pages · May 2018 · free PDF</p>
+                <p class="book-desc">The language of relational databases: SELECT, JOIN, GROUP BY, data definition and permissions. Useful in almost every IT role.</p>
+                <a class="book-link" href="https://books.goalkicker.com/SQLBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-databases" id="mysql" data-cat="cat-databases" aria-labelledby="mysql-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">MySQL</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="mysql-title">MySQL <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">🗄️ Databases · free PDF</p>
+                <p class="book-desc">The popular open-source database: backups with mysqldump, transactions, replication, partitioning and JSON.</p>
+                <a class="book-link" href="https://books.goalkicker.com/MySQLBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-databases" id="postgresql" data-cat="cat-databases" aria-labelledby="postgresql-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">PostgreSQL</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="postgresql-title">PostgreSQL</h4>
+                <p class="book-meta">🗄️ Databases · 74 pages · May 2018 · free PDF</p>
+                <p class="book-desc">A powerful open-source database: data types, JSON support, window functions, PL/pgSQL, backup and restore.</p>
+                <a class="book-link" href="https://books.goalkicker.com/PostgreSQLBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-databases" id="sql-server" data-cat="cat-databases" aria-labelledby="sql-server-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">Microsoft SQL Server</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="sql-server-title">Microsoft SQL Server</h4>
+                <p class="book-meta">🗄️ Databases · 286 pages · May 2018 · free PDF</p>
+                <p class="book-desc">Microsoft's database and T-SQL: JSON, window functions, query tuning and Management Studio shortcuts.</p>
+                <a class="book-link" href="https://books.goalkicker.com/MicrosoftSQLServerBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-databases" id="oracle" data-cat="cat-databases" aria-labelledby="oracle-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">Oracle Database</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="oracle-title">Oracle Database</h4>
+                <p class="book-meta">🗄️ Databases · free PDF</p>
+                <p class="book-desc">The enterprise database and PL/SQL: procedures, string manipulation, pagination and updates.</p>
+                <a class="book-link" href="https://books.goalkicker.com/OracleDatabaseBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-databases" id="mongodb" data-cat="cat-databases" aria-labelledby="mongodb-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">MongoDB</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="mongodb-title">MongoDB</h4>
+                <p class="book-meta">🗄️ Databases · free PDF</p>
+                <p class="book-desc">A document (NoSQL) database that stores JSON-like records; popular for flexible, fast-changing data.</p>
+                <a class="book-link" href="https://books.goalkicker.com/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-frameworks" id="dotnet" data-cat="cat-frameworks" aria-labelledby="dotnet-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">.NET Framework</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="dotnet-title">.NET Framework</h4>
+                <p class="book-meta">🧩 .NET &amp; Java frameworks · free PDF</p>
+                <p class="book-desc">Microsoft's platform for Windows and web applications: the base class library, collections, threading and more.</p>
+                <a class="book-link" href="https://books.goalkicker.com/DotNETFrameworkBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-frameworks" id="entity-framework" data-cat="cat-frameworks" aria-labelledby="entity-framework-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">Entity Framework</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="entity-framework-title">Entity Framework</h4>
+                <p class="book-meta">🧩 .NET &amp; Java frameworks · 94 pages · June 2018 · free PDF</p>
+                <p class="book-desc">Microsoft's object-relational mapper for .NET: Code First, migrations and mapping.</p>
+                <a class="book-link" href="https://books.goalkicker.com/EntityFrameworkBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-frameworks" id="spring" data-cat="cat-frameworks" aria-labelledby="spring-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">Spring Framework</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="spring-title">Spring Framework</h4>
+                <p class="book-meta">🧩 .NET &amp; Java frameworks · free PDF</p>
+                <p class="book-desc">The leading Java application framework: Spring Core, dependency injection, JdbcTemplate and task scheduling.</p>
+                <a class="book-link" href="https://books.goalkicker.com/SpringFrameworkBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-frameworks" id="hibernate" data-cat="cat-frameworks" aria-labelledby="hibernate-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">Hibernate</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="hibernate-title">Hibernate</h4>
+                <p class="book-meta">🧩 .NET &amp; Java frameworks · free PDF</p>
+                <p class="book-desc">The standard object-relational mapper for Java: map classes to database tables and query them without hand-written SQL.</p>
+                <a class="book-link" href="https://books.goalkicker.com/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-mobile" id="android" data-cat="cat-mobile" aria-labelledby="android-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Android</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="android-title">Android</h4>
+                <p class="book-meta">📱 Mobile apps · 1,329 pages · June 2019 · free PDF</p>
+                <p class="book-desc">Building Android apps: activities, layouts, storage, networking and much more, in over 1,300 pages.</p>
+                <a class="book-link" href="https://books.goalkicker.com/AndroidBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-mobile" id="ios" data-cat="cat-mobile" aria-labelledby="ios-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">iOS</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="ios-title">iOS</h4>
+                <p class="book-meta">📱 Mobile apps · free PDF</p>
+                <p class="book-desc">iOS app development with UIKit: views, navigation, data and device features.</p>
+                <a class="book-link" href="https://books.goalkicker.com/iOSBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-mobile" id="react-native" data-cat="cat-mobile" aria-labelledby="react-native-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">React Native</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="react-native-title">React Native</h4>
+                <p class="book-meta">📱 Mobile apps · free PDF</p>
+                <p class="book-desc">Native iOS and Android apps with JavaScript and React: components, navigation, native modules and testing.</p>
+                <a class="book-link" href="https://books.goalkicker.com/ReactNativeBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-mobile" id="xamarin" data-cat="cat-mobile" aria-labelledby="xamarin-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--xs">Xamarin.Forms</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="xamarin-title">Xamarin.Forms</h4>
+                <p class="book-meta">📱 Mobile apps · free PDF</p>
+                <p class="book-desc">Cross-platform mobile apps in C# with one shared user interface (Microsoft has since replaced it with .NET MAUI).</p>
+                <a class="book-link" href="https://books.goalkicker.com/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-science" id="algorithms" data-cat="cat-science" aria-labelledby="algorithms-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title book-cover-title--sm">Algorithms</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="algorithms-title">Algorithms</h4>
+                <p class="book-meta">📊 Data, science &amp; office · free PDF</p>
+                <p class="book-desc">Complexity and Big-O, trees, graphs, sorting, dynamic programming and the Fast Fourier Transform: problem-solving skills for any language.</p>
+                <a class="book-link" href="https://goalkicker.com/AlgorithmsBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-science" id="r" data-cat="cat-science" aria-labelledby="r-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">R</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="r-title">R <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">📊 Data, science &amp; office · free PDF</p>
+                <p class="book-desc">Statistics and data analysis: data frames, plotting and statistical modelling.</p>
+                <a class="book-link" href="https://books.goalkicker.com/RBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-science" id="matlab" data-cat="cat-science" aria-labelledby="matlab-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">MATLAB</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="matlab-title">MATLAB <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">📊 Data, science &amp; office · free PDF</p>
+                <p class="book-desc">Numerical computing for engineers and scientists: vectorisation, graphics, ODE solvers, debugging and performance.</p>
+                <a class="book-link" href="https://books.goalkicker.com/MATLABBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-science" id="latex" data-cat="cat-science" aria-labelledby="latex-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">LaTeX</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="latex-title">LaTeX <span class="book-badge">In my toolbox</span></h4>
+                <p class="book-meta">📊 Data, science &amp; office · free PDF</p>
+                <p class="book-desc">Professional typesetting for papers, theses and CVs: document classes, tables, mathematics, bibliographies and Beamer slides.</p>
+                <a class="book-link" href="https://books.goalkicker.com/LaTeXBook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-science" id="vba" data-cat="cat-science" aria-labelledby="vba-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">VBA</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="vba-title">VBA</h4>
+                <p class="book-meta">📊 Data, science &amp; office · free PDF</p>
+                <p class="book-desc">Automate Microsoft Office with Visual Basic for Applications: strings, arrays, object-oriented VBA and file handling.</p>
+                <a class="book-link" href="https://books.goalkicker.com/VBABook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+            <article class="book-card cat-science" id="excel-vba" data-cat="cat-science" aria-labelledby="excel-vba-title">
+              <div class="book-cover" aria-hidden="true"><span class="book-cover-title">Excel VBA</span><span class="book-cover-sub">Notes for Professionals</span></div>
+              <div class="book-body">
+                <h4 class="book-title" id="excel-vba-title">Excel VBA</h4>
+                <p class="book-meta">📊 Data, science &amp; office · free PDF</p>
+                <p class="book-desc">Excel automation: ranges and cells, workbooks, pivot tables, charts and error handling.</p>
+                <a class="book-link" href="https://books.goalkicker.com/ExcelVBABook/" target="_blank" rel="noopener">Open the book &amp; PDF ↗</a>
+              </div>
+            </article>
+          </div>
+          <button type="button" class="library-more-btn" data-library-more hidden>Show all 48 books ↓</button>
 
           <h3 class="learn-heading">More free learning platforms</h3>
-          <ul class="spaced-list">
-            <li><a href="https://learn.microsoft.com/training/" target="_blank" rel="noopener">Microsoft Learn</a> <a class="ref" href="#learn-ref-3">[3]</a>: free courses for Azure, Windows Server and Microsoft 365, organised by certification.</li>
-            <li><a href="https://skillbuilder.aws/" target="_blank" rel="noopener">AWS Skill Builder</a> <a class="ref" href="#learn-ref-4">[4]</a>: Amazon's own cloud training, with many free courses.</li>
-            <li><a href="https://www.cloudskillsboost.google/" target="_blank" rel="noopener">Google Cloud Skills Boost</a> <a class="ref" href="#learn-ref-5">[5]</a>: hands-on labs and badges for Google Cloud and Workspace.</li>
-            <li><a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">Docker</a> <a class="ref" href="#learn-ref-6">[6]</a> and <a href="https://kubernetes.io/docs/tutorials/" target="_blank" rel="noopener">Kubernetes</a> <a class="ref" href="#learn-ref-7">[7]</a> official tutorials: the best way to learn containers.</li>
-            <li><a href="https://www.freecodecamp.org/learn/" target="_blank" rel="noopener">freeCodeCamp</a> <a class="ref" href="#learn-ref-8">[8]</a>: free interactive courses for web development, Python and more.</li>
-          </ul>
+          <div class="res-grid">
+            <a class="res-card" href="https://learn.microsoft.com/training/" target="_blank" rel="noopener" style="--c: #0078d4">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-windows"></i></span>
+              <span class="res-name">Microsoft Learn <span class="res-ref">[3]</span></span>
+              <span class="res-desc">Free courses for Azure, Windows Server and Microsoft 365, organised by certification.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+            <a class="res-card" href="https://skillbuilder.aws/" target="_blank" rel="noopener" style="--c: #ff9900">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-amazon"></i></span>
+              <span class="res-name">AWS Skill Builder <span class="res-ref">[4]</span></span>
+              <span class="res-desc">Amazon's own cloud training, with many free courses.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+            <a class="res-card" href="https://www.cloudskillsboost.google/" target="_blank" rel="noopener" style="--c: #4285f4">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-google"></i></span>
+              <span class="res-name">Google Cloud Skills Boost <span class="res-ref">[5]</span></span>
+              <span class="res-desc">Hands-on labs and badges for Google Cloud and Workspace.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+            <a class="res-card" href="https://docs.docker.com/get-started/" target="_blank" rel="noopener" style="--c: #1d63ed">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-cubes"></i></span>
+              <span class="res-name">Docker <span class="res-ref">[6]</span></span>
+              <span class="res-desc">The official Docker tutorial: build and run your first containers.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+            <a class="res-card" href="https://kubernetes.io/docs/tutorials/" target="_blank" rel="noopener" style="--c: #326ce5">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-ship"></i></span>
+              <span class="res-name">Kubernetes <span class="res-ref">[7]</span></span>
+              <span class="res-desc">Official Kubernetes tutorials: deploy, scale and update apps in a cluster.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+            <a class="res-card" href="https://www.freecodecamp.org/learn/" target="_blank" rel="noopener" style="--c: #0a0a23">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-free-code-camp"></i></span>
+              <span class="res-name">freeCodeCamp <span class="res-ref">[8]</span></span>
+              <span class="res-desc">Free interactive courses for web development, Python and more.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+          </div>
 
           <h3 class="learn-heading">Free IT book collections</h3>
-          <ul class="spaced-list">
-            <li><a href="https://github.com/EbookFoundation/free-programming-books" target="_blank" rel="noopener">Free Programming Books</a> <a class="ref" href="#learn-ref-9">[9]</a>: a massive, community-maintained list of freely available books, courses and cheat sheets covering dozens of programming languages, in many human languages (Free Ebook Foundation, on GitHub).</li>
-            <li><a href="https://books.goalkicker.com/" target="_blank" rel="noopener">GoalKicker Notes for Professionals</a> <a class="ref" href="#learn-ref-1">[1]</a>: free, downloadable PDF reference books for C, C++, Python, JavaScript, Java and more, compiled from Stack Overflow Documentation. All 48 are listed in <a href="learn-it.html">my IT library</a>.</li>
-            <li><a href="https://freecomputerbooks.com/" target="_blank" rel="noopener">Free Computer Books</a> <a class="ref" href="#learn-ref-10">[10]</a>: a directory of free online computer science, mathematics and programming books, lecture notes and tutorials.</li>
-            <li><a href="https://www.freebookcentre.net/" target="_blank" rel="noopener">FreeBookCentre</a> <a class="ref" href="#learn-ref-11">[11]</a>: free e-books and tutorials for specific languages such as C, Rust, R, Scala, Swift and Go.</li>
-            <li><a href="https://open.umn.edu/opentextbooks/" target="_blank" rel="noopener">Open Textbook Library</a> <a class="ref" href="#learn-ref-12">[12]</a>: peer-reviewed, open-access academic textbooks, including introductory and advanced programming in Python, Java, C++ and JavaScript (University of Minnesota).</li>
-            <li><a href="https://archive.org/" target="_blank" rel="noopener">Internet Archive</a> <a class="ref" href="#learn-ref-13">[13]</a>: a digital library where you can borrow or download free programming books, such as beginner coding guides and reference manuals, in PDF and EPUB.</li>
-          </ul>
+          <div class="res-grid">
+            <a class="res-card" href="https://github.com/EbookFoundation/free-programming-books" target="_blank" rel="noopener" style="--c: #24292f">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-github"></i></span>
+              <span class="res-name">Free Programming Books <span class="res-ref">[9]</span></span>
+              <span class="res-desc">A huge community-maintained list of free books, courses and cheat sheets, in many languages.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+            <a class="res-card" href="https://books.goalkicker.com/" target="_blank" rel="noopener" style="--c: #568203">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-book"></i></span>
+              <span class="res-name">GoalKicker Notes for Professionals <span class="res-ref">[1]</span></span>
+              <span class="res-desc">Free PDF reference books compiled from Stack Overflow Documentation. All 48 are in my library above.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+            <a class="res-card" href="https://freecomputerbooks.com/" target="_blank" rel="noopener" style="--c: #6b3fa0">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-laptop"></i></span>
+              <span class="res-name">Free Computer Books <span class="res-ref">[10]</span></span>
+              <span class="res-desc">A directory of free computer science, maths and programming books, lecture notes and tutorials.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+            <a class="res-card" href="https://www.freebookcentre.net/" target="_blank" rel="noopener" style="--c: #c0392b">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-file-pdf-o"></i></span>
+              <span class="res-name">FreeBookCentre <span class="res-ref">[11]</span></span>
+              <span class="res-desc">Free e-books and tutorials for languages such as C, Rust, R, Scala, Swift and Go.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+            <a class="res-card" href="https://open.umn.edu/opentextbooks/" target="_blank" rel="noopener" style="--c: #7a0019">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-university"></i></span>
+              <span class="res-name">Open Textbook Library <span class="res-ref">[12]</span></span>
+              <span class="res-desc">Peer-reviewed, open-access textbooks, including programming in Python, Java, C++ and JavaScript.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+            <a class="res-card" href="https://archive.org/" target="_blank" rel="noopener" style="--c: #555555">
+              <span class="res-icon" aria-hidden="true"><i class="fa fa-archive"></i></span>
+              <span class="res-name">Internet Archive <span class="res-ref">[13]</span></span>
+              <span class="res-desc">A digital library to borrow or download free programming books in PDF and EPUB.</span>
+              <span class="res-go">Visit ↗</span>
+            </a>
+          </div>
 
-          <h3 class="learn-heading">Sources &amp; references</h3>
+          <div class="references-box">
+          <h4 class="references-title">Sources &amp; references</h4>
           <ol class="references">
             <li id="learn-ref-1">GoalKicker.com, “Notes for Professionals” free book series: <a href="https://books.goalkicker.com/" target="_blank" rel="noopener">books.goalkicker.com</a></li>
             <li id="learn-ref-2">Stack Overflow Documentation contributors, licensed CC BY-SA 3.0: <a href="https://stackoverflow.com/documentation" target="_blank" rel="noopener">stackoverflow.com/documentation</a></li>
@@ -915,6 +1440,7 @@
             <li id="learn-ref-13">Internet Archive: <a href="https://archive.org/" target="_blank" rel="noopener">archive.org</a></li>
           </ol>
           <p class="references-note">The learning materials above belong to their authors. This page only links to them; it is not affiliated with any of them.</p>
+          </div>
 
         </div>
       </section>
@@ -975,11 +1501,26 @@
 
             <div class="free-support">
               <h3 class="free-support-title">Free ways to help</h3>
-              <ul class="fa-ul mb-0">
-                <li><i class="fa-li fa fa-share-alt" aria-hidden="true"></i><button type="button" class="link-btn" data-share>Share this website</button> with someone who is learning IT</li>
-                <li><i class="fa-li fa fa-linkedin" aria-hidden="true"></i>Connect or leave a recommendation on <a href="https://www.linkedin.com/in/fares-jalled-8537b1105/" target="_blank" rel="noopener">LinkedIn</a></li>
-                <li><i class="fa-li fa fa-envelope" aria-hidden="true"></i>Know a job or project that fits me? <a data-contact-link href="https://www.linkedin.com/in/fares-jalled-8537b1105/" target="_blank" rel="noopener">Write me a message</a></li>
-              </ul>
+              <div class="help-cards">
+                <div class="help-card help-card--share">
+                  <span class="help-icon" aria-hidden="true"><i class="fa fa-share-alt"></i></span>
+                  <h4 class="help-title">Share this website</h4>
+                  <p class="help-text">with someone who is learning IT: the free library and learning paths are for everyone.</p>
+                  <button type="button" class="help-btn" data-share><i class="fa fa-link" aria-hidden="true"></i> Share the link</button>
+                </div>
+                <div class="help-card help-card--linkedin">
+                  <span class="help-icon" aria-hidden="true"><i class="fa fa-linkedin"></i></span>
+                  <h4 class="help-title">Connect on LinkedIn</h4>
+                  <p class="help-text">Connect with me or leave a recommendation: it helps a lot.</p>
+                  <a class="help-btn" href="https://www.linkedin.com/in/fares-jalled-8537b1105/" target="_blank" rel="noopener"><i class="fa fa-linkedin" aria-hidden="true"></i> Open LinkedIn</a>
+                </div>
+                <div class="help-card help-card--message">
+                  <span class="help-icon" aria-hidden="true"><i class="fa fa-envelope"></i></span>
+                  <h4 class="help-title">Know a job or project?</h4>
+                  <p class="help-text">If something fits my profile, I would love to hear about it.</p>
+                  <button type="button" class="help-btn" data-contact-open><i class="fa fa-paper-plane" aria-hidden="true"></i> Write me a message</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -995,7 +1536,52 @@
 
     </div>
 
-    <!-- Site settings (visitor counter, visit emails, tipping) and behaviour -->
+    <!-- Contact form: my e-mail address is never in this page. The message is sent to a form service,
+         which forwards it to me (settings: js/config.js). -->
+    <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-title">
+      <form class="contact-form" id="contact-form" novalidate>
+        <button type="button" class="contact-close" data-contact-close aria-label="Close">×</button>
+        <h2 class="contact-title" id="contact-title">Write me a message</h2>
+        <p class="contact-lead">Job offer, project, IT question or just hello: I usually answer within a few days.</p>
+
+        <div class="contact-row">
+          <label for="cf-name">Your name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" maxlength="100" required>
+        </div>
+        <div class="contact-row">
+          <label for="cf-email">Your e-mail <small>(so I can answer you)</small></label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" maxlength="150" required>
+        </div>
+        <div class="contact-row">
+          <label for="cf-topic">Topic</label>
+          <select id="cf-topic" name="topic">
+            <option>Job offer</option>
+            <option>Project or collaboration</option>
+            <option>IT question</option>
+            <option>Research</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="contact-row">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="5" maxlength="5000" required></textarea>
+        </div>
+        <!-- Spam trap: people never see or fill this field, bots do -->
+        <div class="contact-hp" aria-hidden="true">
+          <label for="cf-website">Leave this field empty</label>
+          <input id="cf-website" name="_honey" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p class="contact-status" id="contact-status" role="status" aria-live="polite"></p>
+        <div class="contact-actions">
+          <button type="submit" class="btn-hero btn-hero--primary" id="contact-send"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send message</button>
+          <a class="contact-alt" href="https://www.linkedin.com/in/fares-jalled-8537b1105/" target="_blank" rel="noopener"><i class="fa fa-linkedin" aria-hidden="true"></i> or message me on LinkedIn</a>
+        </div>
+        <p class="contact-privacy">Your message is delivered by <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>; your details are only used to answer you.</p>
+      </form>
+    </dialog>
+
+    <!-- Site settings (visitor counter, contact form, tipping) and behaviour -->
     <script src="js/config.js"></script>
     <script src="js/site.js" defer></script>
 
