@@ -33,6 +33,9 @@
   </head>
 
   <body id="page-top">
+    <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+    <button type="button" class="float-like" data-react="love" data-float-like aria-label="Like this website"><span class="float-like-heart">❤️</span><span class="float-like-count" data-react-count="love"></span></button>
+    <button type="button" class="to-top" data-to-top aria-label="Back to the top" hidden>🚀</button>
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
@@ -81,6 +84,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#support">Support me</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#stats">Visitors ❤️</a>
+          </li>
         </ul>
       </div>
       <div class="visitor-chip d-none d-lg-block" data-visitor-bar>
@@ -103,13 +109,24 @@
       </div>
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="about">
-        <div class="my-auto">
+        <div class="science-float" aria-hidden="true">
+          <span>⚛️</span><span>🧪</span><span>🔬</span><span>🧬</span><span>📡</span><span>🛰️</span><span>💡</span>
+          <span>🧲</span><span>⚡</span><span>🐧</span><span>💻</span><span>🔭</span><span>🌍</span><span>🚀</span>
+        </div>
+        <div class="atom" aria-hidden="true">
+          <span class="atom-nucleus"></span>
+          <span class="atom-orbit"><span class="atom-electron"></span></span>
+          <span class="atom-orbit"><span class="atom-electron"></span></span>
+          <span class="atom-orbit"><span class="atom-electron"></span></span>
+        </div>
+        <div class="my-auto hero-content">
           <h3 class="hero-hello"> Mesdames, Messieurs, welcome to my Personal Website </h3>
           <h1 class="mb-0 hero-name"> FARÉS
             <span class="text-primary"> Jalled </span>
             <span class="degree"> M.Sc. </span>
           </h1>
           <p class="hero-typing">I am a <span class="typed" data-typed='["Linux &amp; DevOps engineer", "Red Hat Certified System Administrator", "Ph.D. researcher at the Maser Collective", "cloud enthusiast: AWS &amp; Azure", "professional swimmer &amp; marathon runner"]'>Linux &amp; DevOps engineer</span><span class="typed-caret" aria-hidden="true"></span></p>
+          <svg class="maser-wave" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 Q 15 0 30 20 T 60 20 T 90 20 T 120 20 T 150 20 T 180 20 T 210 20 T 240 20 T 270 20 T 300 20 T 330 20 T 360 20 T 390 20 T 420 20 T 450 20 T 480 20 T 510 20 T 540 20 T 570 20 T 600 20"/></svg>
           <div class="subheading mb-4">Berlin · Germany ·
             <button type="button" class="link-btn hero-msg" data-contact-open>✉ Write me a message</button>
           </div>
@@ -118,6 +135,10 @@
             <a class="btn-hero" href="#library"><i class="fa fa-book" aria-hidden="true"></i> Free IT library</a>
             <a class="btn-hero" href="#experience"><i class="fa fa-briefcase" aria-hidden="true"></i> My experience</a>
             <span class="hero-visitors" data-visitor-bar><span aria-hidden="true">👁</span> <b data-visitor-count></b> <span data-visitor-word>visitors</span></span>
+          </div>
+          <div class="fun-fact" data-facts>
+            <span class="fun-fact-icon" aria-hidden="true">💡</span>
+            <span><b>Did you know?</b> <span class="fun-fact-text" data-fact>MASER means Microwave Amplification by Stimulated Emission of Radiation, and the first maser (1954) came before the first laser (1960).</span></span>
           </div>
           <p class="mb-5"><b>
             I'm a professional swimmer with a deep passion for running and marathon. I also have a strong love for 'STEML' Science, Technology, Engineering, Mathematics, and Languages, especially in areas like Plasma physics, semiconductors, IT administration, electronics, and programming. My journey has taken me across the globe, living in five countries on three continents, where I've enjoyed immersing myself in diverse cultures and civilizations.
@@ -165,16 +186,16 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
         <div class="my-auto">
-          <h2 class="mb-5">Professional Experience 
+          <h2 class="mb-5 sec-title"><span class="sec-emoji" aria-hidden="true">💼</span> Professional Experience 
             <!-- <span style="font-size: 30px;"> mostly in Germany </span> -->
           </h2>
 
-          <div class="resume-item resume-item--current d-flex flex-column flex-md-row mb-3">
+          <div class="resume-item d-flex flex-column flex-md-row mb-3">
             <div class="resume-content mr-auto">
-              <h3 class="mb-0">Scientific Assistant <span class="now-badge">Current</span></h3>
-              <div class="subheading mb-2">Saarland University · Maser Collective · Chair of Prof. Dr. Christopher Kay · Saarbrücken</div>
-              <img class="maser-logo" src="img/maser-collective.webp" alt="Maser Collective" width="225" height="35" loading="lazy" decoding="async">
-              <p class="mb-3">
+              <h3 class="mb-0">Scientific Assistant <span class="now-badge"><span class="now-dot" aria-hidden="true"></span>Current</span></h3>
+              <div class="subheading mb-3">Saarland University · Maser Collective · Saarbrücken</div>
+              <p>
+                <img class="maser-logo" src="img/maser-collective.webp" alt="Maser Collective" width="135" height="21" loading="lazy" decoding="async">
                 <a class="GFG" href="https://www.uni-saarland.de/en/chair/kay.html" target="_blank" rel="noopener">Chair page</a>
                 <a class="GFG" href="https://www.uni-saarland.de/en/lehrstuhl/kay/maser-collective.html" target="_blank" rel="noopener">Maser Collective</a>
               </p>
@@ -351,7 +372,7 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
         <div class="my-auto">
-          <h2 class="mb-5"> STUDIES &amp; Education </h2>
+          <h2 class="mb-5 sec-title"><span class="sec-emoji" aria-hidden="true">🎓</span>  STUDIES &amp; Education </h2>
 
           <div class="resume-item d-flex flex-column flex-md-row mb-3">
             <div class="resume-content mr-auto">
@@ -430,7 +451,7 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
         <div class="my-auto">
-          <h2 class="mb-5">Technical Skills</h2>
+          <h2 class="mb-5 sec-title"><span class="sec-emoji" aria-hidden="true">🛠️</span> Technical Skills</h2>
 
           <div class="subheading mb-3">Programming Languages | Simulation Tools | Software | Frameworks | Libraries | Concepts </div>
           
@@ -535,7 +556,7 @@
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="languages">
         <div class="my-auto">
           
-          <h2 class="mb-5">Languages</h2>
+          <h2 class="mb-5 sec-title"><span class="sec-emoji" aria-hidden="true">🗣️</span> Languages</h2>
 
           <h3>I do speak</h3>
 
@@ -557,7 +578,7 @@
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
         <div class="my-auto">
           
-          <h2 class="mb-5">Awards &amp; Scholarships</h2>
+          <h2 class="mb-5 sec-title"><span class="sec-emoji" aria-hidden="true">🏆</span> Awards &amp; Scholarships</h2>
           <ul class="fa-ul mb-0">
 
           <li class="award-new">
@@ -598,7 +619,7 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="certifications">
         <div class="my-auto">
-          <h2 class="mb-5">Online Certifications</h2>
+          <h2 class="mb-5 sec-title"><span class="sec-emoji" aria-hidden="true">📜</span> Online Certifications</h2>
           <ul class="fa-ul mb-0">
 
             <li>
@@ -780,7 +801,7 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="publications">
         <div class="my-auto">
-          <h2 class="mb-5">Publications</h2>
+          <h2 class="mb-5 sec-title"><span class="sec-emoji" aria-hidden="true">🔬</span> Publications</h2>
 
           <ul class="fa-ul mb-0">
             <li>
@@ -817,7 +838,7 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="learn">
         <div class="my-auto">
-          <h2 class="mb-5">Learn IT</h2>
+          <h2 class="mb-5 sec-title"><span class="sec-emoji" aria-hidden="true">📚</span> Learn IT</h2>
 
           <p class="learn-lead">
             IT means Information Technology: the computers, networks, operating systems, software and data that every
@@ -1448,7 +1469,7 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
         <div class="my-auto">
-          <h2 class="mb-5">Interests</h2>
+          <h2 class="mb-5 sec-title"><span class="sec-emoji" aria-hidden="true">🏊</span> Interests</h2>
           <ul class="spaced-list">
             <li>
               My IT and Engineering interests include DevOps tools and technologies, cloud computing, IT systems administration, and the simulation and development of memristors and memristive devices.
@@ -1461,6 +1482,8 @@
               Member of the German Association of Engineers (VDI) since 2021, actively engaging with the engineering community to stay at the forefront of industry developments.
             </li>
           </ul>
+
+          <div class="pool" aria-hidden="true"><span class="swimmer">🏊</span><span class="pool-fish">🐟</span><span class="pool-magnet">🧲</span></div>
 
           <h4 class="mt-5"> My Favourite Music </h4>
           <!-- Spotify player: loads only when the visitor clicks (faster page, no Spotify cookies before that) -->
@@ -1477,7 +1500,7 @@
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="support">
         <div class="my-auto">
-          <h2 class="mb-5">Support me</h2>
+          <h2 class="mb-5 sec-title"><span class="sec-emoji" aria-hidden="true">🍵</span> Support me</h2>
 
           <p><b>
             If you do enjoy the content, consider supporting my efforts to finance my IT certification exams. Your support would be greatly appreciated and will help me continue to provide valuable content.
@@ -1487,7 +1510,10 @@
 
           <div class="support-grid">
             <div class="moroccan-teapot-container">
-              <img src="img/orientalische_teeglaeser.jpg" alt="Moroccan tea glasses" class="moroccan-teapot-image" width="120" height="120" loading="lazy" decoding="async">
+              <div class="tea-visual">
+                <span class="steam" aria-hidden="true"></span><span class="steam" aria-hidden="true"></span><span class="steam" aria-hidden="true"></span>
+                <img src="img/orientalische_teeglaeser.jpg" alt="Moroccan tea glasses" class="moroccan-teapot-image" width="120" height="120" loading="lazy" decoding="async">
+              </div>
               <h3 class="tea-title">Buy me a green tea</h3>
               <p class="tea-text">Every tea goes towards my next IT certification exam.</p>
               <a class="moroccan-tea-btn" data-kofi-link href="https://ko-fi.com/jasfar" target="_blank" rel="noopener">🫖 Buy me a green tea</a>
@@ -1526,11 +1552,55 @@
         </div>
       </section>
 
+      <section class="resume-section stats-section p-3 p-lg-5 d-flex flex-column" id="stats">
+        <div class="my-auto">
+          <h2 class="mb-4 sec-title"><span class="sec-emoji" aria-hidden="true">🌍</span> Visitors &amp; likes</h2>
+          <p class="stats-lead">Thank you for visiting! Here is how many people found their way to this website.</p>
+          <div class="stats-grid" data-stats hidden>
+            <div class="stat-card stat-card--today">
+              <span class="stat-emoji" aria-hidden="true">☀️</span>
+              <span class="stat-number" data-stat="day">0</span>
+              <span class="stat-label">visitors today</span>
+            </div>
+            <div class="stat-card stat-card--month">
+              <span class="stat-emoji" aria-hidden="true">🗓️</span>
+              <span class="stat-number" data-stat="month">0</span>
+              <span class="stat-label">in <span data-stat-month-name>this month</span></span>
+            </div>
+            <div class="stat-card stat-card--year">
+              <span class="stat-emoji" aria-hidden="true">📅</span>
+              <span class="stat-number" data-stat="year">0</span>
+              <span class="stat-label">in <span data-stat-year-name>this year</span></span>
+            </div>
+            <div class="stat-card stat-card--total">
+              <span class="stat-emoji" aria-hidden="true">🌍</span>
+              <span class="stat-number" data-stat="total">0</span>
+              <span class="stat-label">visitors since 7 November 2026</span>
+            </div>
+            <div class="stat-card stat-card--likes">
+              <span class="stat-emoji" aria-hidden="true">❤️</span>
+              <span class="stat-number" data-stat="likes">0</span>
+              <span class="stat-label">reactions</span>
+            </div>
+          </div>
+
+          <div class="reactions">
+            <h3 class="reactions-title">Did you like my website? React with an emoji!</h3>
+            <div class="reaction-buttons">
+              <button type="button" class="reaction" data-react="love" aria-label="Love it"><span class="reaction-emoji">❤️</span><span class="reaction-name">Love it</span><span class="reaction-count" data-react-count="love"></span></button>
+              <button type="button" class="reaction" data-react="clap" aria-label="Applause"><span class="reaction-emoji">👏</span><span class="reaction-name">Applause</span><span class="reaction-count" data-react-count="clap"></span></button>
+              <button type="button" class="reaction" data-react="wow" aria-label="Wow"><span class="reaction-emoji">🤩</span><span class="reaction-name">Wow</span><span class="reaction-count" data-react-count="wow"></span></button>
+              <button type="button" class="reaction" data-react="rocket" aria-label="To the moon"><span class="reaction-emoji">🚀</span><span class="reaction-name">To the moon</span><span class="reaction-count" data-react-count="rocket"></span></button>
+            </div>
+            <p class="reaction-thanks" data-react-thanks aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
       <footer class="site-footer p-3 px-lg-5">
-        <span>© <span data-year>2026</span> Farés Jalled</span>
+        <span>© <span data-year>2026</span> Farés Jalled · made with 💚, ☕ and a bit of ⚛️</span>
         <span class="visitor-bar" data-visitor-bar>
           <span aria-hidden="true">👁</span> <span data-visitor-count></span> <span data-visitor-word>visitors</span>
-          <span class="visitor-note">· counted anonymously, without cookies</span>
         </span>
       </footer>
 
@@ -1577,7 +1647,6 @@
           <button type="submit" class="btn-hero btn-hero--primary" id="contact-send"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send message</button>
           <a class="contact-alt" href="https://www.linkedin.com/in/fares-jalled-8537b1105/" target="_blank" rel="noopener"><i class="fa fa-linkedin" aria-hidden="true"></i> or message me on LinkedIn</a>
         </div>
-        <p class="contact-privacy">Your message is delivered by <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>; your details are only used to answer you.</p>
       </form>
     </dialog>
 

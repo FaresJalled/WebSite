@@ -99,8 +99,27 @@
   }
 
   /* ---------- Gentle fade-in of sections' content while scrolling ---------- */
+  // sections get "in-view" when they scroll in: the title emoji pops and the underline grows
+  if ('IntersectionObserver' in window) {
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in-view');
+        sectionObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.15 });
+    $$('.resume-section').forEach(function (sec) { sectionObserver.observe(sec); });
+  } else {
+    document.documentElement.classList.add('no-observer');
+  }
+
   if ('IntersectionObserver' in window && !reduceMotion) {
-    var revealItems = $$('.resume-item, .path, .book-card, .res-card, .help-card, .group-photo, .skill-logos, .lang-bars, .fa-ul > li, .moroccan-teapot-container');
+    var revealItems = $$('.resume-item, .path, .book-card, .res-card, .help-card, .group-photo, .skill-logos > li, .lang-bars, .fa-ul > li, .moroccan-teapot-container, .stat-card, .reaction, .pool, .fun-fact');
+    // items of one list appear one after the other (a small delay each, see --i in css/custom.css)
+    revealItems.forEach(function (el) {
+      var siblings = el.parentNode ? Array.prototype.indexOf.call(el.parentNode.children, el) : 0;
+      el.style.setProperty('--i', Math.min(siblings, 12));
+    });
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -166,18 +185,7 @@
     if (!n || n < 1) return;
     $$('[data-visitor-word]').forEach(function (el) { el.textContent = n === 1 ? 'visitor' : 'visitors'; });
     $$('[data-visitor-bar]').forEach(function (el) { el.classList.add('is-ready'); });
-    var els = $$('[data-visitor-count]');
-    var format = function (v) { return Math.round(v).toLocaleString('en-US'); };
-    if (reduceMotion || n < 10) { els.forEach(function (el) { el.textContent = format(n); }); return; }
-    var start = null, duration = 1400;              // count up from 0
-    var frame = function (now) {
-      if (start === null) start = now;
-      var t = Math.min(1, (now - start) / duration);
-      var eased = 1 - Math.pow(1 - t, 3);
-      els.forEach(function (el) { el.textContent = format(n * eased); });
-      if (t < 1) window.requestAnimationFrame(frame);
-    };
-    window.requestAnimationFrame(frame);
+    animateNumber($$('[data-visitor-count]'), n);   // count up from 0
   }
 
   if (window.fetch && sbUrl && sbKey) {
@@ -201,17 +209,7 @@
       .then(function (stats) { showVisitors(stats && stats.visitors); })
       .catch(function () { /* database not set up: keep the counter hidden */ });
   } else if (window.fetch && counterCfg.service === 'abacus' && counterCfg.namespace && counterCfg.key) {
-    var counted = store.get('fj-counted') === '1';
-    var countNow = !isOwner && !isBot && !counted;
-    var api = 'https://abacus.jasoncameron.dev/' + (countNow ? 'hit/' : 'get/') +
-              encodeURIComponent(counterCfg.namespace) + '/' + encodeURIComponent(counterCfg.key);
-    fetch(api, { cache: 'no-store' })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (data) {
-        if (countNow) store.set('fj-counted', '1');
-        showVisitors(data && data.value);
-      })
-      .catch(function () { /* service not reachable: keep the counter hidden */ });
+    abacusStats();
   }
 
   /* ---------- Contact form (the e-mail address is never shown on the page) ---------- */
@@ -425,6 +423,285 @@
     render();
     if (window.location.hash) showBook(decodeURIComponent(window.location.hash.slice(1)), true);
     window.addEventListener('hashchange', function () { showBook(decodeURIComponent(window.location.hash.slice(1)), true); });
+  }
+
+  /* ---------- Counting service (Abacus) ---------- */
+  // (a function, not a variable: it is already called while the page loads, before this line runs)
+  function abacus(action, key) {                     // action: 'hit' (+1 and read) or 'get' (read)
+    var ns = encodeURIComponent(counterCfg.namespace || 'faresjalled-org');
+    return fetch('https://abacus.jasoncameron.dev/' + action + '/' + ns + '/' + encodeURIComponent(key), { cache: 'no-store' })
+      .then(function (r) {
+        if (r.status === 404) return { value: 0 };    // nobody counted yet (e.g. first visitor of the day)
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      })
+      .then(function (d) { return Number(d && d.value) || 0; });
+  }
+
+  // "today", "this month" and "this year" follow the date in Berlin, the same for every visitor
+  function berlinDate() {
+    var d = new Date();
+    try {
+      var s = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+      if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+    } catch (e) { /* old browser */ }
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+
+  function animateNumber(els, n) {
+    var format = function (v) { return Math.round(v).toLocaleString('en-US'); };
+    if (reduceMotion || n < 10) { els.forEach(function (el) { el.textContent = format(n); }); return; }
+    var start = null, duration = 1600;
+    var frame = function (now) {
+      if (start === null) start = now;
+      var t = Math.min(1, (now - start) / duration);
+      var eased = 1 - Math.pow(1 - t, 3);
+      els.forEach(function (el) { el.textContent = format(n * eased); });
+      if (t < 1) window.requestAnimationFrame(frame);
+    };
+    window.requestAnimationFrame(frame);
+  }
+
+  /* ---------- Visitor statistics: today, this month, this year, total ----------
+     Each browser is counted once per day, once per month, once per year and once in total
+     (a small note in the browser's storage remembers it). Your own visits (?owner=on) and bots only read. */
+  function abacusStats() {
+    var date = berlinDate();                          // e.g. 2026-11-07
+    var base = counterCfg.key;
+    var periods = [
+      { name: 'total', key: base,                         flag: 'fj-counted', mark: '1' },
+      { name: 'year',  key: base + '-y' + date.slice(0, 4), flag: 'fj-count-y', mark: date.slice(0, 4) },
+      { name: 'month', key: base + '-m' + date.slice(0, 7), flag: 'fj-count-m', mark: date.slice(0, 7) },
+      { name: 'day',   key: base + '-d' + date,            flag: 'fj-count-d', mark: date }
+    ];
+    var readOnly = isOwner || isBot;
+    Promise.all(periods.map(function (p) {
+      var hit = !readOnly && store.get(p.flag) !== p.mark;
+      return abacus(hit ? 'hit' : 'get', p.key).then(function (n) {
+        if (hit) store.set(p.flag, p.mark);
+        return [p.name, n];
+      }, function () { return [p.name, null]; });
+    })).then(function (list) {
+      var v = {};
+      list.forEach(function (x) { v[x[0]] = x[1]; });
+      if (v.total === null) { notifyVisit(null); return; }   // service not reachable: counters stay hidden
+      showVisitors(v.total);
+      var y = Number(date.slice(0, 4)), m = Number(date.slice(5, 7));
+      var monthName = 'this month';
+      try { monthName = new Date(Date.UTC(y, m - 1, 15)).toLocaleString('en-US', { month: 'long', timeZone: 'UTC' }) + ' ' + y; } catch (e) { /* keep */ }
+      $$('[data-stat-month-name]').forEach(function (el) { el.textContent = monthName; });
+      $$('[data-stat-year-name]').forEach(function (el) { el.textContent = String(y); });
+      var grid = $('[data-stats]');
+      if (grid) grid.hidden = false;
+      ['day', 'month', 'year', 'total'].forEach(function (name) {
+        animateNumber($$('[data-stat="' + name + '"]'), v[name] || 0);
+      });
+      notifyVisit({ day: v.day, month: v.month, year: v.year, total: v.total });
+    });
+  }
+  if (!(window.fetch && counterCfg.service === 'abacus' && counterCfg.namespace && counterCfg.key)) {
+    setTimeout(function () { notifyVisit(null); }, 1500);   // no counter: still send the visit e-mail
+  }
+
+  /* ---------- Likes: emoji reactions, one of each per browser ---------- */
+  var REACTIONS = ['love', 'clap', 'wow', 'rocket'];
+  var REACT_EMOJI = { love: '❤️', clap: '👏', wow: '🤩', rocket: '🚀' };
+  var reactCounts = {};
+  function showReactions() {
+    var total = 0;
+    REACTIONS.forEach(function (r) {
+      var n = reactCounts[r] || 0;
+      total += n;
+      $$('[data-react-count="' + r + '"]').forEach(function (el) { el.textContent = n ? n.toLocaleString('en-US') : ''; });
+      var mine = store.get('fj-react-' + r) === '1';
+      $$('[data-react="' + r + '"]').forEach(function (b) {
+        b.classList.toggle('is-reacted', mine);
+        b.classList.toggle('is-liked', mine);
+        b.setAttribute('aria-pressed', mine ? 'true' : 'false');
+      });
+    });
+    $$('[data-stat="likes"]').forEach(function (el) { el.textContent = total.toLocaleString('en-US'); });
+  }
+  if (window.fetch && counterCfg.service === 'abacus') {
+    Promise.all(REACTIONS.map(function (r) {
+      return abacus('get', 'react-' + r).then(function (n) { reactCounts[r] = n; }, function () { /* keep 0 */ });
+    })).then(showReactions);
+  } else {
+    showReactions();
+  }
+  function burst(x, y, emoji) {                       // a little firework of emojis
+    if (reduceMotion) return;
+    var extra = ['✨', '⭐', '💚', emoji];
+    for (var i = 0; i < 16; i++) {
+      var s = document.createElement('span');
+      var angle = Math.random() * 2 * Math.PI, dist = 60 + Math.random() * 130;
+      s.className = 'burst';
+      s.textContent = i % 3 === 0 ? extra[i % extra.length] : emoji;
+      s.style.left = x + 'px';
+      s.style.top = y + 'px';
+      s.style.setProperty('--dx', Math.round(Math.cos(angle) * dist) + 'px');
+      s.style.setProperty('--dy', Math.round(Math.sin(angle) * dist - 70) + 'px');
+      s.style.setProperty('--rot', Math.round(Math.random() * 120 - 60) + 'deg');
+      document.body.appendChild(s);
+      setTimeout(function (el) { el.remove(); }.bind(null, s), 1200);
+    }
+  }
+  $$('[data-react]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var r = btn.getAttribute('data-react');
+      var rect = btn.getBoundingClientRect();
+      var thanks = $('[data-react-thanks]');
+      burst(rect.left + rect.width / 2, rect.top + rect.height / 2, REACT_EMOJI[r]);
+      btn.classList.remove('is-popping');
+      void btn.offsetWidth;                            // restart the pop animation
+      btn.classList.add('is-popping');
+      if (store.get('fj-react-' + r) === '1') {
+        if (thanks) thanks.textContent = 'You already reacted with ' + REACT_EMOJI[r] + ', thank you!';
+        return;
+      }
+      store.set('fj-react-' + r, '1');
+      reactCounts[r] = (reactCounts[r] || 0) + 1;      // show it at once
+      showReactions();
+      if (thanks) thanks.textContent = 'Thank you for the ' + REACT_EMOJI[r] + ' !';
+      if (window.fetch && counterCfg.service === 'abacus') {
+        abacus('hit', 'react-' + r).then(function (n) { reactCounts[r] = n; showReactions(); }, function () { /* keep */ });
+      }
+    });
+  });
+
+  /* ---------- E-mail to the owner for each new visitor (at most one per visitor and day) ----------
+     Sent through the contact-form service. Contains the visitor's IP address, the approximate place
+     (from the IP, via GeoJS), internet provider, operating system, browser, device and screen.
+     Not sent for your own visits (?owner=on), bots, or browsers with "Do Not Track" / "Global Privacy Control". */
+  function describeDevice(ua, hints) {
+    var os = 'unknown', browser = 'unknown', m;
+    if (/Windows NT 10\.0/.test(ua)) os = 'Windows 10 or 11';
+    else if ((m = ua.match(/Windows NT ([\d.]+)/))) os = 'Windows NT ' + m[1];
+    else if ((m = ua.match(/Android ([\d.]+)/))) os = 'Android ' + m[1];
+    else if ((m = ua.match(/(iPhone|iPad|iPod).*? OS ([\d_]+)/))) os = (m[1] === 'iPad' ? 'iPadOS ' : 'iOS ') + m[2].replace(/_/g, '.');
+    else if ((m = ua.match(/Mac OS X ([\d_.]+)/))) os = 'macOS ' + m[1].replace(/_/g, '.');
+    else if (/CrOS/.test(ua)) os = 'ChromeOS';
+    else if (/Linux/.test(ua)) os = 'Linux' + (/Ubuntu/.test(ua) ? ' (Ubuntu)' : '');
+    if (hints && hints.platformVersion) {
+      if (hints.platform === 'Windows') os = parseInt(hints.platformVersion, 10) >= 13 ? 'Windows 11' : 'Windows 10';
+      else if (hints.platform === 'macOS') os = 'macOS ' + hints.platformVersion;
+      else if (hints.platform === 'Android') os = 'Android ' + hints.platformVersion;
+    }
+    if ((m = ua.match(/Edg(?:A|iOS)?\/(\d+)/))) browser = 'Microsoft Edge ' + m[1];
+    else if ((m = ua.match(/OPR\/(\d+)/))) browser = 'Opera ' + m[1];
+    else if ((m = ua.match(/SamsungBrowser\/(\d+)/))) browser = 'Samsung Internet ' + m[1];
+    else if ((m = ua.match(/(?:Firefox|FxiOS)\/(\d+)/))) browser = 'Firefox ' + m[1];
+    else if ((m = ua.match(/CriOS\/(\d+)/))) browser = 'Chrome (iOS) ' + m[1];
+    else if ((m = ua.match(/Chrome\/(\d+)/))) browser = 'Chrome ' + m[1];
+    else if ((m = ua.match(/Version\/([\d.]+).*Safari/))) browser = 'Safari ' + m[1];
+    var device = (/iPad|Tablet/.test(ua) || (/Android/.test(ua) && !/Mobile/.test(ua))) ? 'tablet'
+               : (/Mobi|iPhone|iPod/.test(ua) ? 'mobile phone' : 'desktop or laptop');
+    if (hints && hints.model) device += ' (' + hints.model + ')';
+    return { os: os, browser: browser, device: device };
+  }
+  function withTimeout(promise, ms, fallback) {
+    return Promise.race([promise, new Promise(function (resolve) { setTimeout(function () { resolve(fallback); }, ms); })]);
+  }
+  function notifyVisit(numbers) {
+    if (isOwner || isBot || !window.fetch || !window.Promise) return;
+    if (navigator.globalPrivacyControl === true || navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+    var url = endpoint();
+    if (!url) return;
+    var today = berlinDate();
+    if (store.get('fj-notified') === today) return;
+    store.set('fj-notified', today);
+    var geo = withTimeout(fetch('https://get.geojs.io/v1/ip/geo.json', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; }), 5000, {});
+    var hints = (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues)
+      ? withTimeout(navigator.userAgentData.getHighEntropyValues(['platform', 'platformVersion', 'model']).catch(function () { return null; }), 2000, null)
+      : Promise.resolve(null);
+    Promise.all([geo, hints]).then(function (res) {
+      var g = res[0] || {}, dev = describeDevice(navigator.userAgent || '', res[1]);
+      var place = [g.city, g.region, g.country].filter(Boolean).join(', ') || 'unknown';
+      var tz = '';
+      try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { /* ignore */ }
+      var conn = navigator.connection || {};
+      var touch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var data = {
+        _subject: '👀 New visitor on faresjalled.org · ' + place + ' · ' + dev.os,
+        _template: 'table',
+        _captcha: 'false',
+        _honey: '',
+        'IP address': g.ip || 'unknown',
+        'Place (approximate, from the IP)': place + (g.accuracy ? ' (about ' + g.accuracy + ' km)' : ''),
+        'Map (approximate)': g.latitude ? 'https://www.openstreetmap.org/?mlat=' + g.latitude + '&mlon=' + g.longitude + '#map=9/' + g.latitude + '/' + g.longitude : 'unknown',
+        'Internet provider': g.organization_name ? g.organization_name + (g.asn ? ' (AS' + g.asn + ')' : '') : 'unknown',
+        'Operating system': dev.os,
+        'Browser': dev.browser,
+        'Device': dev.device,
+        'Screen': window.screen.width + ' x ' + window.screen.height + ' (pixel ratio ' + (window.devicePixelRatio || 1) + '), window ' + window.innerWidth + ' x ' + window.innerHeight,
+        'Languages': (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language]).join(', '),
+        'Time zone': (tz || 'unknown') + (g.timezone && g.timezone !== tz ? ' (IP says ' + g.timezone + ')' : ''),
+        'Visitor local time': new Date().toString(),
+        'Came from': document.referrer || 'typed the address or used a bookmark',
+        'Page': window.location.pathname + window.location.hash,
+        'Touch screen': touch ? 'yes' : 'no',
+        'CPU cores / memory': (navigator.hardwareConcurrency || '?') + ' cores, ' + (navigator.deviceMemory ? navigator.deviceMemory + ' GB' : 'memory unknown'),
+        'Connection': conn.effectiveType ? conn.effectiveType + (conn.downlink ? ', about ' + conn.downlink + ' Mbit/s' : '') : 'unknown',
+        'Colour scheme': dark ? 'dark' : 'light',
+        'Visitor numbers': numbers ? 'today ' + numbers.day + ', ' + 'this month ' + numbers.month + ', this year ' + numbers.year + ', total ' + numbers.total : 'not available',
+        'User agent': navigator.userAgent || ''
+      };
+      return fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
+        keepalive: true
+      });
+    }).catch(function () { /* e-mail not sent: nothing to show the visitor */ });
+  }
+
+  /* ---------- Fun science facts in the hero ---------- */
+  var factEl = $('[data-fact]');
+  if (factEl) {
+    var FACTS = [
+      factEl.textContent,
+      'Pentacene molecules can make a maser work at room temperature: first shown in 2012.',
+      'The memristor, the "missing" fourth basic circuit element, was predicted by Leon Chua in 1971.',
+      'Every one of the world\'s 500 fastest supercomputers runs Linux.',
+      'The first computer "bug" (1947) was a real moth stuck in a relay of the Harvard Mark II.',
+      'Light from the Moon needs about 1.3 seconds to reach your eyes.',
+      'One gram of DNA can store about 215 petabytes of data (shown in 2017).'
+    ];
+    var factIndex = 0;
+    setInterval(function () {
+      if (document.hidden) return;
+      factIndex = (factIndex + 1) % FACTS.length;
+      if (reduceMotion) { factEl.textContent = FACTS[factIndex]; return; }
+      factEl.classList.add('is-changing');
+      setTimeout(function () { factEl.textContent = FACTS[factIndex]; factEl.classList.remove('is-changing'); }, 450);
+    }, 8000);
+  }
+
+  /* ---------- Scroll progress bar and the rocket back to the top ---------- */
+  var progressBar = $('[data-scroll-progress]');
+  var toTop = $('[data-to-top]');
+  var fxTicking = false;
+  function scrollFx() {
+    fxTicking = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var y = window.pageYOffset || 0;
+    if (progressBar) progressBar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0).toFixed(4) + ')';
+    if (toTop && !toTop.classList.contains('is-launching')) toTop.hidden = y < 600;
+  }
+  window.addEventListener('scroll', function () {
+    if (fxTicking) return;
+    fxTicking = true;
+    window.requestAnimationFrame(scrollFx);
+  }, { passive: true });
+  scrollFx();
+  if (toTop) {
+    toTop.addEventListener('click', function () {
+      toTop.classList.add('is-launching');
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      setTimeout(function () { toTop.classList.remove('is-launching'); toTop.hidden = true; }, 900);
+    });
   }
 
   /* ---------- Footer year ---------- */
