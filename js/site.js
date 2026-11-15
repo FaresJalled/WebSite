@@ -434,13 +434,13 @@
   /* ---------- Counting service (Abacus) ---------- */
   // (a function, not a variable: it is already called while the page loads, before this line runs)
   // The free counting service is sometimes slow or answers with an error, so every request
-  // gets a 6-second time limit and up to 3 tries.
+  // gets a 10-second time limit and up to 3 tries.
   function abacus(action, key) {                     // action: 'hit' (+1 and read) or 'get' (read)
     var ns = encodeURIComponent(counterCfg.namespace || 'faresjalled-org');
     var url = 'https://abacus.jasoncameron.dev/' + action + '/' + ns + '/' + encodeURIComponent(key);
     var attempt = function (n) {
       var ctrl = window.AbortController ? new AbortController() : null;
-      var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 6000) : null;
+      var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 10000) : null;
       return fetch(url, { cache: 'no-store', signal: ctrl ? ctrl.signal : undefined })
         .then(function (r) {
           if (r.status === 404) return { value: 0 };  // nobody counted yet (e.g. first visitor of the day)
