@@ -666,7 +666,10 @@ html {
 
 /* ---------- News ticker (top of the page) ---------- */
 .ticker {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 54px;                 /* below the phone menu bar */
+  z-index: 1020;
   overflow: hidden;
   background: linear-gradient(90deg, #2f5a00, #568203 50%, #2f5a00);
   color: #fff;
@@ -703,6 +706,9 @@ html {
   text-decoration: underline;
   text-underline-offset: 2px;
   font-weight: 700;
+}
+@media (min-width: 992px) {
+  .ticker { top: 0; }        /* computers: the menu is on the left, the ticker sits at the very top */
 }
 @keyframes ticker-move {
   from { transform: translateX(0); }
@@ -1417,8 +1423,19 @@ html {
   height: 5px;
   width: 0;
   border-radius: 3px;
-  background: linear-gradient(90deg, #3d6b00, #7fb02a, #f4c542);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 252, 214, .95), rgba(255, 255, 255, 0)) no-repeat,
+    linear-gradient(90deg, #3d6b00, #7fb02a, #f4c542);
+  background-size: 2.2rem 100%, 100% 100%;
+  background-position: -2.5rem 0, 0 0;
   transition: width 1s cubic-bezier(.2, .8, .2, 1) .2s;
+}
+.in-view .sec-title::after {
+  animation: photon-run 3.2s ease-in-out 1.2s infinite;
+}
+@keyframes photon-run {
+  0%   { background-position: -2.5rem 0, 0 0; }
+  60%, 100% { background-position: 6rem 0, 0 0; }
 }
 .in-view .sec-title::after,
 .no-observer .sec-title::after {
@@ -1449,7 +1466,7 @@ html {
   transition-delay: calc(var(--i, 0) * 45ms);
 }
 
-/* ---------- Hero: floating science symbols, atom, maser wave, fun facts ---------- */
+/* ---------- Hero: atom, maser wave, fun facts ---------- */
 #about {
   position: relative;
   overflow: hidden;
@@ -1458,45 +1475,6 @@ html {
   position: relative;
   z-index: 1;
 }
-.science-float {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-.science-float span {
-  position: absolute;
-  font-size: 2rem;
-  opacity: .42;
-  animation: science-drift 14s ease-in-out infinite;
-}
-.science-float span:nth-child(1)  { left: 64%; top: 5%; font-size: 2.0rem; animation-duration: 17s; animation-delay: -3s; }
-.science-float span:nth-child(2)  { left: 77%; top: 8%; font-size: 2.4rem; animation-duration: 14s; animation-delay: -6s; }
-.science-float span:nth-child(3)  { left: 91%; top: 5%; font-size: 2.0rem; animation-duration: 11s; animation-delay: -9s; }
-.science-float span:nth-child(4)  { left: 79%; top: 50%; font-size: 2.2rem; animation-duration: 18s; animation-delay: -0s; }
-.science-float span:nth-child(5)  { left: 94%; top: 30%; font-size: 2.0rem; animation-duration: 15s; animation-delay: -3s; }
-.science-float span:nth-child(6)  { left: 88%; top: 58%; font-size: 2.0rem; animation-duration: 12s; animation-delay: -6s; }
-.science-float span:nth-child(7)  { left: 70%; top: 20%; font-size: 1.6rem; animation-duration: 19s; animation-delay: -9s; }
-.science-float span:nth-child(8)  { left: 94%; top: 52%; font-size: 1.7rem; animation-duration: 16s; animation-delay: -0s; }
-.science-float span:nth-child(9)  { left: 86%; top: 40%; font-size: 1.5rem; animation-duration: 13s; animation-delay: -3s; }
-.science-float span:nth-child(10) { left: 66%; top: 32%; font-size: 1.8rem; animation-duration: 10s; animation-delay: -6s; }
-.science-float span:nth-child(11) { left: 73%; top: 41%; font-size: 1.6rem; animation-duration: 17s; animation-delay: -9s; }
-.science-float span:nth-child(12) { left: 94%; top: 13%; font-size: 1.6rem; animation-duration: 14s; animation-delay: -0s; }
-.science-float span:nth-child(13) { left: 82%; top: 22%; font-size: 1.7rem; animation-duration: 11s; animation-delay: -3s; }
-.science-float span:nth-child(14) { left: 74%; top: 58%; font-size: 1.9rem; animation-duration: 18s; animation-delay: -6s; }
-@keyframes science-drift {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25%      { transform: translate(14px, -22px) rotate(12deg); }
-  50%      { transform: translate(-10px, -38px) rotate(-8deg); }
-  75%      { transform: translate(-18px, -14px) rotate(6deg); }
-}
-@media (max-width: 991px) {
-  .science-float span {
-    opacity: .2;
-    font-size: 1.5rem;
-  }
-}
-
 .atom {
   position: absolute;
   right: 7%;
@@ -1560,12 +1538,12 @@ html {
 }
 .maser-wave path {
   fill: none;
-  stroke: #a03cc8;
-  stroke-width: 3;
+  stroke: #6a9a12;
+  stroke-width: 2.5;
   stroke-linecap: round;
-  stroke-dasharray: 18 10;
-  animation: wave-run 1.2s linear infinite;
-  filter: drop-shadow(0 0 4px rgba(160, 60, 200, .45));
+  stroke-dasharray: 22 10;
+  animation: wave-run 1.6s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(127, 176, 42, .55));
 }
 @keyframes wave-run {
   to { stroke-dashoffset: -56; }
@@ -1976,7 +1954,7 @@ html {
 
 /* ---------- Everything still, for visitors who prefer reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .now-dot, .sec-emoji, .in-view .sec-emoji, .science-float span, .atom-nucleus, .atom-orbit,
+  .now-dot, .sec-emoji, .in-view .sec-emoji, .atom-nucleus, .atom-orbit, .sec-title::after,
   .maser-wave path, .fun-fact-icon, .fa-trophy, .bar::before, .pool::before, .swimmer, .pool-fish,
   .pool-magnet, .steam, .float-like-heart, .stat-emoji, .stat-card::after, .burst {
     animation: none !important;

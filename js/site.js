@@ -19,6 +19,12 @@
   };
   document.documentElement.classList.add('js');
 
+  /* ---------- Security: never show this site inside another website's frame (click tricks) ---------- */
+  if (window.top !== window.self) {
+    document.documentElement.style.display = 'none';           // nothing to click on inside a foreign frame
+    try { window.top.location.replace(window.location.href); } catch (e) { /* the browser refused: stays hidden */ }
+  }
+
   /* ---------- Mobile menu ---------- */
   var toggler = $('.navbar-toggler');
   var menu = $('#navbarSupportedContent');
@@ -427,15 +433,29 @@
 
   /* ---------- Counting service (Abacus) ---------- */
   // (a function, not a variable: it is already called while the page loads, before this line runs)
+  // The free counting service is sometimes slow or answers with an error, so every request
+  // gets a 6-second time limit and up to 3 tries.
   function abacus(action, key) {                     // action: 'hit' (+1 and read) or 'get' (read)
     var ns = encodeURIComponent(counterCfg.namespace || 'faresjalled-org');
-    return fetch('https://abacus.jasoncameron.dev/' + action + '/' + ns + '/' + encodeURIComponent(key), { cache: 'no-store' })
-      .then(function (r) {
-        if (r.status === 404) return { value: 0 };    // nobody counted yet (e.g. first visitor of the day)
-        if (!r.ok) throw new Error(r.status);
-        return r.json();
-      })
-      .then(function (d) { return Number(d && d.value) || 0; });
+    var url = 'https://abacus.jasoncameron.dev/' + action + '/' + ns + '/' + encodeURIComponent(key);
+    var attempt = function (n) {
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 6000) : null;
+      return fetch(url, { cache: 'no-store', signal: ctrl ? ctrl.signal : undefined })
+        .then(function (r) {
+          if (r.status === 404) return { value: 0 };  // nobody counted yet (e.g. first visitor of the day)
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        })
+        .then(function (d) { if (timer) clearTimeout(timer); return Number(d && d.value) || 0; })
+        .catch(function (err) {
+          if (timer) clearTimeout(timer);
+          if (n >= 2) throw err;
+          return new Promise(function (res) { setTimeout(res, 800 * (n + 1) + Math.random() * 500); })
+            .then(function () { return attempt(n + 1); });
+        });
+    };
+    return attempt(0);
   }
 
   // "today", "this month" and "this year" follow the date in Berlin, the same for every visitor
@@ -475,16 +495,17 @@
       { name: 'day',   key: base + '-d' + date,            flag: 'fj-count-d', mark: date }
     ];
     var readOnly = isOwner || isBot;
-    Promise.all(periods.map(function (p) {
-      var hit = !readOnly && store.get(p.flag) !== p.mark;
-      return abacus(hit ? 'hit' : 'get', p.key).then(function (n) {
-        if (hit) store.set(p.flag, p.mark);
-        return [p.name, n];
-      }, function () { return [p.name, null]; });
-    })).then(function (list) {
-      var v = {};
-      list.forEach(function (x) { v[x[0]] = x[1]; });
-      if (v.total === null) { notifyVisit(null); return; }   // service not reachable: counters stay hidden
+    // the last numbers this browser received: the counter shows at once, even while the service is slow
+    var cache = {};
+    try { cache = JSON.parse(store.get('fj-stats-cache') || '{}') || {}; } catch (e) { cache = {}; }
+    var cached = {
+      total: cache.total || null,
+      year: cache.y === date.slice(0, 4) ? cache.year : null,
+      month: cache.m === date.slice(0, 7) ? cache.month : null,
+      day: cache.d === date ? cache.day : null
+    };
+    function render(v) {
+      if (!v.total) return;
       showVisitors(v.total);
       var y = Number(date.slice(0, 4)), m = Number(date.slice(5, 7));
       var monthName = 'this month';
@@ -496,8 +517,31 @@
       ['day', 'month', 'year', 'total'].forEach(function (name) {
         animateNumber($$('[data-stat="' + name + '"]'), v[name] || 0);
       });
-      notifyVisit({ day: v.day, month: v.month, year: v.year, total: v.total });
-    });
+    }
+    render(cached);
+    function load(retry) {
+      Promise.all(periods.map(function (p) {
+        var hit = !readOnly && store.get(p.flag) !== p.mark;
+        return abacus(hit ? 'hit' : 'get', p.key).then(function (n) {
+          if (hit) store.set(p.flag, p.mark);       // marked as counted only after the service confirmed it
+          return [p.name, n];
+        }, function () { return [p.name, null]; });
+      })).then(function (list) {
+        var fresh = {}, v = {};
+        list.forEach(function (x) { fresh[x[0]] = x[1]; });
+        ['day', 'month', 'year', 'total'].forEach(function (k) { v[k] = fresh[k] !== null ? fresh[k] : cached[k]; });
+        if (fresh.total !== null) {
+          store.set('fj-stats-cache', JSON.stringify({ total: v.total, y: date.slice(0, 4), year: v.year, m: date.slice(0, 7), month: v.month, d: date, day: v.day }));
+        }
+        if (v.total) render(v);
+        if (fresh.total === null && retry) {        // service down right now: one more try in 20 seconds
+          setTimeout(function () { load(false); }, 20000);
+          return;
+        }
+        notifyVisit(v.total ? { day: v.day, month: v.month, year: v.year, total: v.total } : null);
+      });
+    }
+    load(true);
   }
   if (!(window.fetch && counterCfg.service === 'abacus' && counterCfg.namespace && counterCfg.key)) {
     setTimeout(function () { notifyVisit(null); }, 1500);   // no counter: still send the visit e-mail
