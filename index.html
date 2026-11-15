@@ -4,6 +4,9 @@
   <head>
 
     <meta charset="utf-8">
+    <!-- Security: the browser only runs this site's own scripts and only talks to the services listed here -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://abacus.jasoncameron.dev https://formsubmit.co https://get.geojs.io; frame-src https://open.spotify.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Farés Jalled · Personal Website</title>
     <meta name="description" content="Farés Jalled, M.Sc. — Berlin-based IT professional (Linux, DevOps, cloud) and researcher in memristive devices. CV, certifications and publications.">

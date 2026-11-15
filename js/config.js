@@ -11,6 +11,7 @@ window.SITE_CONFIG = {
   },
   // Optional, instead of Abacus: your own Supabase database (private statistics and an e-mail
   // per new visitor; see the setup folder). When both values are filled in, Supabase is used.
+  // (Then also add the Supabase address to "connect-src" in the security line at the top of index.html.)
   supabaseUrl: '',
   supabaseKey: '',
 
